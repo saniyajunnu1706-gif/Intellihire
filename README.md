@@ -184,7 +184,7 @@ MIT License — Copyright (c) 2025 Intellihire
 
 ## 📬 Contact
 
-- 🌐 Website: [intellihire.netlify.app](https://intellihire.netlify.app)
+- 🌐 Website: [intellihire-8.netlify.app](https://intellihire-8.netlify.app)
 - 🐙 GitHub: [@saniyajunnu1706](https://github.com/saniyajunnu1706)
 
 ---
