@@ -166,7 +166,7 @@ Go to **Settings → Pages → Deploy from branch → main / root**
 ## 🤝 Contributing
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/intellihire.git
+git clone https://github.com/saniyajunnu1706/intellihire.git
 git checkout -b feature/your-feature-name
 # make changes to index.html
 git commit -m "feat: describe your change"
