@@ -1,0 +1,2597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intellihire — AI Interview Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0F0E0D;
+  --ink2:#3D3A35;
+  --ink3:#7A7570;
+  --surface:#FAFAF8;
+  --surface2:#F2F1ED;
+  --surface3:#E8E6E0;
+  --accent:#1A5F4A;
+  --accent2:#2A8060;
+  --accent-light:#E1F5EE;
+  --accent-pale:#F0FAF5;
+  --amber:#BA7517;
+  --amber-light:#FAEEDA;
+  --red:#A32D2D;
+  --red-light:#FCEBEB;
+  --border:rgba(15,14,13,0.12);
+  --border2:rgba(15,14,13,0.06);
+  --radius:12px;
+  --radius-sm:8px;
+  --shadow:0 2px 16px rgba(15,14,13,0.08);
+  --shadow-lg:0 8px 40px rgba(15,14,13,0.12);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--surface);
+  color:var(--ink);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* ─── TYPOGRAPHY ─── */
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:600}
+.serif-light{font-family:'Fraunces',serif;font-weight:300}
+
+/* ─── PAGES ─── */
+.page{display:none;min-height:100vh}
+.page.active{display:flex;flex-direction:column}
+
+/* ─────────── ROYAL LANDING ─────────── */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700&display=swap');
+
+:root{
+  --royal-navy:#0D1B3E;
+  --royal-navy2:#152347;
+  --royal-gold:#C9A84C;
+  --royal-gold2:#E8C97A;
+  --royal-gold3:#F5E6B8;
+  --royal-cream:#FDF8EC;
+  --royal-dark:#080F22;
+  --royal-mid:#1A2D5A;
+}
+
+#page-landing{
+  background: radial-gradient(ellipse at 20% 0%, #1E2D6B 0%, var(--royal-navy) 40%, var(--royal-dark) 100%);
+  color:#fff;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:2rem;
+  position:relative;
+  overflow:hidden;
+  min-height:100vh;
+}
+
+/* ── Animated starfield background ── */
+#page-landing::before{
+  content:'';position:absolute;inset:0;z-index:0;
+  background-image:
+    radial-gradient(1px 1px at 10% 15%, rgba(201,168,76,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 25% 60%, rgba(255,255,255,0.2) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 40% 25%, rgba(201,168,76,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 55% 80%, rgba(255,255,255,0.15) 0%, transparent 100%),
+    radial-gradient(1px 1px at 70% 10%, rgba(201,168,76,0.35) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 80% 50%, rgba(255,255,255,0.2) 0%, transparent 100%),
+    radial-gradient(1px 1px at 90% 35%, rgba(201,168,76,0.25) 0%, transparent 100%),
+    radial-gradient(1px 1px at 15% 90%, rgba(255,255,255,0.1) 0%, transparent 100%),
+    radial-gradient(1px 1px at 60% 45%, rgba(201,168,76,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 35% 70%, rgba(255,255,255,0.15) 0%, transparent 100%);
+}
+
+/* ── Golden top beam ── */
+#page-landing::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;z-index:1;
+  background: linear-gradient(90deg, transparent 0%, var(--royal-gold) 30%, var(--royal-gold2) 50%, var(--royal-gold) 70%, transparent 100%);
+  box-shadow: 0 0 30px rgba(201,168,76,0.6), 0 0 60px rgba(201,168,76,0.2);
+}
+
+/* ── Corner ornaments (CSS-drawn) ── */
+.royal-corner{
+  position:absolute;width:80px;height:80px;z-index:2;opacity:0.5;
+}
+.royal-corner.tl{top:16px;left:16px}
+.royal-corner.tr{top:16px;right:16px;transform:scaleX(-1)}
+.royal-corner.bl{bottom:16px;left:16px;transform:scaleY(-1)}
+.royal-corner.br{bottom:16px;right:16px;transform:scale(-1,-1)}
+
+/* ── Left & right vertical ornament lines ── */
+.royal-vline{
+  position:absolute;top:10%;bottom:10%;width:1px;z-index:1;
+  background:linear-gradient(180deg, transparent 0%, rgba(201,168,76,0.3) 20%, rgba(201,168,76,0.5) 50%, rgba(201,168,76,0.3) 80%, transparent 100%);
+}
+.royal-vline.left{left:48px}
+.royal-vline.right{right:48px}
+
+/* ── Content wrapper ── */
+.royal-content{
+  position:relative;z-index:3;
+  width:100%;max-width:860px;
+  display:flex;flex-direction:column;align-items:center;
+}
+
+/* ── Crown / Logo mark ── */
+.royal-logo-mark{
+  width:110px;height:110px;margin:0 auto 1.5rem;
+  filter:drop-shadow(0 0 20px rgba(201,168,76,0.5));
+  animation:royal-float 4s ease-in-out infinite;
+}
+@keyframes royal-float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+}
+
+/* ── Ornamental divider ── */
+.royal-divider{
+  display:flex;align-items:center;gap:12px;
+  margin:1.25rem auto;width:100%;max-width:420px;
+}
+.royal-divider-line{
+  flex:1;height:1px;
+  background:linear-gradient(90deg, transparent, rgba(201,168,76,0.6), transparent);
+}
+.royal-divider-diamond{
+  width:8px;height:8px;background:var(--royal-gold);
+  transform:rotate(45deg);flex-shrink:0;
+  box-shadow:0 0 8px rgba(201,168,76,0.6);
+}
+
+/* ── Status badge ── */
+.royal-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  border:1px solid rgba(201,168,76,0.35);
+  border-radius:3px;padding:8px 20px;
+  font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.18em;
+  color:var(--royal-gold2);margin-bottom:1.5rem;
+  background:rgba(201,168,76,0.06);
+  text-transform:uppercase;
+  box-shadow:0 0 20px rgba(201,168,76,0.08),inset 0 0 20px rgba(201,168,76,0.04);
+}
+.royal-badge-dot{
+  width:6px;height:6px;background:var(--royal-gold);
+  border-radius:50%;animation:pulse-gold 2s infinite;
+  box-shadow:0 0 6px rgba(201,168,76,0.8);
+}
+@keyframes pulse-gold{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.7)}}
+
+/* ── Main headline ── */
+.royal-h1{
+  font-family:'Cinzel Decorative',serif;
+  font-size:clamp(2rem,5.5vw,4rem);
+  font-weight:700;
+  line-height:1.1;
+  letter-spacing:0.04em;
+  margin-bottom:0.5rem;
+  background:linear-gradient(180deg, #FFFFFF 0%, var(--royal-gold2) 50%, var(--royal-gold) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  text-shadow:none;
+  filter:drop-shadow(0 2px 12px rgba(201,168,76,0.3));
+}
+.royal-h1-sub{
+  font-family:'Cinzel',serif;
+  font-size:clamp(0.8rem,2vw,1.1rem);
+  font-weight:400;
+  letter-spacing:0.25em;
+  color:rgba(201,168,76,0.7);
+  text-transform:uppercase;
+  margin-bottom:2rem;
+}
+
+/* ── Sub-copy ── */
+.royal-sub{
+  font-family:'DM Sans',sans-serif;
+  font-size:1.05rem;
+  color:rgba(255,255,255,0.65);
+  max-width:560px;
+  margin:0 auto 2.5rem;
+  line-height:1.8;
+}
+
+/* ── CTA Buttons ── */
+.royal-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:3rem}
+.btn-royal-primary{
+  background:linear-gradient(135deg, var(--royal-gold2) 0%, var(--royal-gold) 100%);
+  color:var(--royal-dark);border:none;
+  border-radius:3px;
+  padding:14px 36px;
+  font-family:'Cinzel',serif;font-size:13px;font-weight:700;
+  letter-spacing:0.12em;text-transform:uppercase;
+  cursor:pointer;transition:all 0.25s;
+  box-shadow:0 4px 20px rgba(201,168,76,0.4), 0 0 0 1px rgba(201,168,76,0.3);
+}
+.btn-royal-primary:hover{
+  background:linear-gradient(135deg, var(--royal-gold3) 0%, var(--royal-gold2) 100%);
+  transform:translateY(-2px);
+  box-shadow:0 8px 32px rgba(201,168,76,0.5), 0 0 0 1px rgba(201,168,76,0.5);
+}
+.btn-royal-outline{
+  background:transparent;color:var(--royal-gold2);
+  border:1px solid rgba(201,168,76,0.45);
+  border-radius:3px;
+  padding:14px 36px;
+  font-family:'Cinzel',serif;font-size:13px;font-weight:600;
+  letter-spacing:0.12em;text-transform:uppercase;
+  cursor:pointer;transition:all 0.25s;
+}
+.btn-royal-outline:hover{
+  background:rgba(201,168,76,0.08);
+  border-color:var(--royal-gold);
+  transform:translateY(-2px);
+}
+
+/* ── Royal stats row ── */
+.royal-stats{
+  display:flex;gap:0;justify-content:center;
+  border:1px solid rgba(201,168,76,0.2);
+  border-radius:4px;
+  margin-bottom:3rem;
+  overflow:hidden;
+  max-width:600px;
+  background:rgba(201,168,76,0.04);
+}
+.royal-stat{
+  flex:1;padding:1rem 1.5rem;text-align:center;
+  border-right:1px solid rgba(201,168,76,0.15);
+}
+.royal-stat:last-child{border-right:none}
+.royal-stat-val{
+  font-family:'Cinzel',serif;font-size:1.6rem;font-weight:700;
+  color:var(--royal-gold2);display:block;margin-bottom:4px;
+}
+.royal-stat-lbl{
+  font-size:10px;letter-spacing:0.12em;text-transform:uppercase;
+  color:rgba(255,255,255,0.4);font-family:'DM Sans',sans-serif;
+}
+
+/* ── Feature pills row ── */
+.royal-features{
+  display:flex;gap:24px;justify-content:center;flex-wrap:wrap;
+  padding-top:2rem;border-top:1px solid rgba(201,168,76,0.15);
+  max-width:700px;margin:0 auto;
+}
+.royal-feature-pill{
+  display:flex;align-items:center;gap:8px;
+  font-family:'DM Sans',sans-serif;
+  font-size:12.5px;color:rgba(255,255,255,0.5);
+  letter-spacing:0.02em;
+}
+.royal-feature-pill-icon{
+  color:var(--royal-gold);opacity:0.8;
+}
+
+/* ── Bottom footer bar ── */
+.royal-footer{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:10px;text-align:center;
+  font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.2em;
+  color:rgba(201,168,76,0.25);text-transform:uppercase;
+  border-top:1px solid rgba(201,168,76,0.08);z-index:3;
+}
+
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.btn-primary{
+  background:linear-gradient(135deg, var(--royal-gold2) 0%, var(--royal-gold) 100%);
+  color:var(--royal-dark);
+  border:none;border-radius:3px;padding:14px 32px;
+  font-family:'Cinzel',serif;font-size:13px;font-weight:700;
+  letter-spacing:0.1em;text-transform:uppercase;
+  cursor:pointer;transition:all 0.2s;
+  box-shadow:0 4px 20px rgba(201,168,76,0.35);
+}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(201,168,76,0.5)}
+.btn-outline-white{
+  background:transparent;color:var(--royal-gold2);
+  border:1px solid rgba(201,168,76,0.4);
+  border-radius:3px;padding:14px 32px;
+  font-family:'Cinzel',serif;font-size:13px;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;
+  cursor:pointer;transition:all 0.2s;
+}
+.btn-outline-white:hover{background:rgba(201,168,76,0.08);border-color:var(--royal-gold);transform:translateY(-1px)}
+.landing-features{display:none}
+.landing-badge{display:none}
+.landing-h1{display:none}
+.landing-sub{display:none}
+.landing-actions{display:none}
+.feature-pill{display:none}
+
+/* ─────────── AUTH PAGES ─────────── */
+.auth-layout{
+  display:grid;grid-template-columns:1fr 1fr;min-height:100vh;
+}
+.auth-panel{
+  background:linear-gradient(160deg,#0E2820 0%,#1A5F4A 100%);
+  padding:3rem;display:flex;flex-direction:column;justify-content:space-between;
+  color:#fff;position:relative;overflow:hidden;
+}
+.auth-panel::after{
+  content:'';position:absolute;right:-80px;top:-80px;
+  width:360px;height:360px;border-radius:50%;
+  background:rgba(255,255,255,0.04);pointer-events:none;
+}
+.auth-panel-logo{
+  font-family:'Fraunces',serif;font-weight:600;font-size:1.5rem;
+  display:flex;align-items:center;gap:10px;
+}
+.logo-icon{
+  width:36px;height:36px;border-radius:9px;
+  background:#5DCAA5;display:flex;align-items:center;justify-content:center;
+}
+.auth-panel-copy h2{
+  font-family:'Fraunces',serif;font-weight:600;font-size:2.2rem;
+  line-height:1.2;margin-bottom:1rem;
+}
+.auth-panel-copy p{color:rgba(255,255,255,0.65);line-height:1.7;font-size:0.95rem}
+.auth-testimonial{
+  background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);
+  border-radius:var(--radius);padding:1.25rem 1.5rem;margin-top:2rem;font-size:0.875rem;
+}
+.auth-testimonial p{color:rgba(255,255,255,0.8);font-style:italic;margin-bottom:0.75rem}
+.auth-testimonial cite{color:rgba(255,255,255,0.5);font-style:normal;font-size:0.8rem}
+
+.auth-form-panel{
+  background:var(--surface);display:flex;align-items:center;
+  justify-content:center;padding:3rem 2rem;
+}
+.auth-card{width:100%;max-width:440px}
+.auth-title{font-size:1.8rem;margin-bottom:0.5rem;letter-spacing:-0.02em}
+.auth-subtitle{color:var(--ink3);font-size:0.9rem;margin-bottom:2rem}
+
+.form-group{margin-bottom:1.25rem}
+.form-label{
+  display:block;font-size:13px;font-weight:500;color:var(--ink2);
+  margin-bottom:6px;letter-spacing:0.01em;
+}
+.form-input{
+  width:100%;height:44px;border:1.5px solid var(--surface3);
+  border-radius:var(--radius-sm);background:#fff;
+  padding:0 14px;font-family:'DM Sans',sans-serif;font-size:14px;
+  color:var(--ink);transition:border-color 0.2s,box-shadow 0.2s;outline:none;
+}
+.form-input:focus{border-color:var(--accent2);box-shadow:0 0 0 3px rgba(42,128,96,0.12)}
+.form-input::placeholder{color:var(--ink3)}
+.form-select{
+  width:100%;height:44px;border:1.5px solid var(--surface3);
+  border-radius:var(--radius-sm);background:#fff;
+  padding:0 14px;font-family:'DM Sans',sans-serif;font-size:14px;
+  color:var(--ink);appearance:none;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%237A7570' stroke-width='2' d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 12px center;
+  transition:border-color 0.2s;outline:none;
+}
+.form-select:focus{border-color:var(--accent2);box-shadow:0 0 0 3px rgba(42,128,96,0.12)}
+
+.btn-submit{
+  width:100%;height:46px;background:var(--accent);color:#fff;
+  border:none;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;
+  font-size:15px;font-weight:600;cursor:pointer;transition:all 0.2s;
+  letter-spacing:-0.01em;
+}
+.btn-submit:hover{background:var(--accent2);transform:translateY(-1px)}
+.btn-submit:active{transform:translateY(0)}
+.auth-switch{
+  text-align:center;margin-top:1.5rem;font-size:14px;color:var(--ink3);
+}
+.auth-switch a{color:var(--accent);text-decoration:none;font-weight:500}
+.auth-switch a:hover{text-decoration:underline}
+.divider{
+  display:flex;align-items:center;gap:12px;margin:1.5rem 0;
+  color:var(--ink3);font-size:13px;
+}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border)}
+.error-msg{
+  background:var(--red-light);border:1px solid rgba(163,45,45,0.2);
+  border-radius:var(--radius-sm);padding:10px 14px;
+  font-size:13px;color:var(--red);margin-bottom:1rem;display:none;
+}
+.pw-bar{
+  flex:1;height:4px;border-radius:2px;background:var(--surface3);
+  transition:background 0.3s;
+}
+.auth-feature-row{
+  display:flex;align-items:flex-start;gap:12px;
+}
+.auth-feature-icon{
+  width:32px;height:32px;border-radius:8px;flex-shrink:0;
+  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);
+  display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.8);
+}
+.btn-submit:disabled{background:var(--surface3);color:var(--ink3);cursor:not-allowed;transform:none}
+
+/* ─────────── MAIN APP ─────────── */
+#page-app{background:var(--surface);flex-direction:row}
+.sidebar{
+  width:280px;background:#fff;border-right:1px solid var(--border);
+  display:flex;flex-direction:column;height:100vh;position:sticky;top:0;
+  flex-shrink:0;
+}
+.sidebar-header{
+  padding:1.5rem;border-bottom:1px solid var(--border2);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.sidebar-logo{
+  font-family:'Fraunces',serif;font-weight:600;font-size:1.2rem;
+  display:flex;align-items:center;gap:8px;color:var(--ink);
+}
+.sidebar-logo .logo-icon{width:28px;height:28px;border-radius:7px;font-size:14px}
+.sidebar-nav{flex:1;overflow-y:auto;padding:1rem 0}
+.nav-section-label{
+  font-size:11px;font-weight:600;color:var(--ink3);
+  letter-spacing:0.08em;text-transform:uppercase;
+  padding:0.75rem 1.25rem 0.4rem;
+}
+.nav-item{
+  display:flex;align-items:center;gap:10px;padding:10px 1.25rem;
+  font-size:14px;color:var(--ink2);cursor:pointer;
+  transition:all 0.15s;border-radius:0;position:relative;
+}
+.nav-item:hover{background:var(--surface2);color:var(--ink)}
+.nav-item.active{background:var(--accent-pale);color:var(--accent);font-weight:500}
+.nav-item.active::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;
+  width:3px;background:var(--accent);border-radius:0 2px 2px 0;
+}
+.nav-item svg{flex-shrink:0;opacity:0.7}
+.nav-item.active svg{opacity:1}
+.sidebar-footer{
+  padding:1rem 1.25rem;border-top:1px solid var(--border2);
+}
+.user-info{
+  display:flex;align-items:center;gap:10px;padding:8px;
+  border-radius:var(--radius-sm);cursor:pointer;transition:background 0.15s;
+}
+.user-info:hover{background:var(--surface2)}
+.avatar{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--accent-light);color:var(--accent);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:600;font-size:14px;flex-shrink:0;
+}
+.user-name{font-size:13px;font-weight:500;color:var(--ink)}
+.user-email{font-size:12px;color:var(--ink3)}
+
+.main-content{flex:1;overflow-y:auto;height:100vh}
+
+/* ─────────── DASHBOARD ─────────── */
+.content-section{display:none;padding:2.5rem}
+.content-section.active{display:block}
+.section-header{margin-bottom:2rem}
+.section-title{font-size:1.6rem;letter-spacing:-0.02em;margin-bottom:0.3rem}
+.section-subtitle{color:var(--ink3);font-size:0.9rem}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:2rem}
+.stat-card{
+  background:#fff;border:1px solid var(--border);border-radius:var(--radius);
+  padding:1.25rem 1.5rem;
+}
+.stat-label{font-size:12px;color:var(--ink3);font-weight:500;letter-spacing:0.02em;margin-bottom:8px}
+.stat-value{font-family:'Fraunces',serif;font-size:2rem;font-weight:600;color:var(--ink);margin-bottom:4px}
+.stat-meta{font-size:12px;color:var(--ink3)}
+.stat-meta .up{color:#1D9E75}
+.stat-meta .down{color:var(--red)}
+
+.card{
+  background:#fff;border:1px solid var(--border);border-radius:var(--radius);
+  padding:1.5rem;margin-bottom:1.5rem;
+}
+.card-title{font-size:1rem;font-weight:600;margin-bottom:1rem;color:var(--ink)}
+
+/* ─────────── COURSE CARDS ─────────── */
+.courses-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.course-card{
+  background:#fff;border:1px solid var(--border);border-radius:var(--radius);
+  padding:1.5rem;cursor:pointer;transition:all 0.2s;
+  display:flex;flex-direction:column;
+}
+.course-card:hover{
+  border-color:var(--accent2);transform:translateY(-2px);
+  box-shadow:var(--shadow);
+}
+.course-icon{
+  width:48px;height:48px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1rem;font-size:22px;
+}
+.course-name{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.course-desc{font-size:13px;color:var(--ink3);line-height:1.5;margin-bottom:1rem;flex:1}
+.course-meta{
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:12px;color:var(--ink3);border-top:1px solid var(--border2);
+  padding-top:1rem;
+}
+.course-tag{
+  background:var(--surface2);color:var(--ink2);
+  padding:3px 8px;border-radius:4px;font-size:11px;font-weight:500;
+}
+.difficulty-badge{
+  padding:3px 8px;border-radius:4px;font-size:11px;font-weight:500;
+}
+.diff-beginner{background:#E1F5EE;color:#0F6E56}
+.diff-intermediate{background:var(--amber-light);color:#633806}
+.diff-advanced{background:var(--red-light);color:var(--red)}
+
+/* ─────────── INTERVIEW SCREEN ─────────── */
+.interview-header{
+  background:#fff;border-bottom:1px solid var(--border);
+  padding:1rem 2.5rem;display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:10;
+}
+.progress-bar-wrap{
+  flex:1;max-width:300px;margin:0 2rem;
+}
+.progress-label{font-size:12px;color:var(--ink3);margin-bottom:6px;display:flex;justify-content:space-between}
+.progress-bar{
+  height:6px;background:var(--surface2);border-radius:3px;overflow:hidden;
+}
+.progress-fill{
+  height:100%;background:var(--accent);border-radius:3px;
+  transition:width 0.5s ease;
+}
+.timer-badge{
+  background:var(--amber-light);color:var(--amber);
+  padding:6px 14px;border-radius:6px;font-size:13px;font-weight:600;
+  display:flex;align-items:center;gap:6px;
+}
+.interview-body{padding:2.5rem;max-width:800px;margin:0 auto}
+.q-number{font-size:12px;font-weight:600;color:var(--ink3);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.75rem}
+.q-text{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:600;line-height:1.4;margin-bottom:0.5rem}
+.q-context{font-size:14px;color:var(--ink3);margin-bottom:2rem;line-height:1.6;background:var(--surface2);padding:1rem;border-radius:var(--radius-sm);border-left:3px solid var(--accent)}
+.answer-area{
+  width:100%;min-height:180px;border:1.5px solid var(--surface3);
+  border-radius:var(--radius);padding:1rem 1.25rem;
+  font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.7;
+  color:var(--ink);resize:vertical;transition:border-color 0.2s;outline:none;
+  background:#fff;
+}
+.answer-area:focus{border-color:var(--accent2);box-shadow:0 0 0 3px rgba(42,128,96,0.1)}
+.answer-area::placeholder{color:var(--ink3)}
+.interview-actions{
+  display:flex;align-items:center;justify-content:space-between;margin-top:1.5rem;
+}
+.btn-secondary{
+  background:#fff;border:1.5px solid var(--border);color:var(--ink2);
+  border-radius:var(--radius-sm);padding:10px 20px;
+  font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;
+  cursor:pointer;transition:all 0.2s;
+}
+.btn-secondary:hover{border-color:var(--ink2);background:var(--surface2)}
+.btn-accent{
+  background:var(--accent);color:#fff;border:none;
+  border-radius:var(--radius-sm);padding:10px 24px;
+  font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;
+  cursor:pointer;transition:all 0.2s;
+}
+.btn-accent:hover{background:var(--accent2)}
+.btn-accent:disabled{background:var(--surface3);color:var(--ink3);cursor:not-allowed}
+
+/* ─────────── EVALUATION ─────────── */
+.eval-card{
+  background:#fff;border:1px solid var(--border);border-radius:var(--radius);
+  padding:1.5rem;margin-bottom:1.25rem;
+}
+.eval-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1rem}
+.eval-q{font-size:14px;font-weight:500;color:var(--ink);max-width:75%;line-height:1.4}
+.score-pill{
+  display:flex;align-items:center;gap:6px;
+  padding:6px 14px;border-radius:100px;font-weight:600;font-size:14px;
+  flex-shrink:0;
+}
+.score-high{background:#E1F5EE;color:#0F6E56}
+.score-mid{background:var(--amber-light);color:#633806}
+.score-low{background:var(--red-light);color:var(--red)}
+.eval-answer-label{font-size:11px;font-weight:600;color:var(--ink3);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px}
+.eval-answer{font-size:13px;color:var(--ink2);line-height:1.6;background:var(--surface2);padding:0.75rem;border-radius:6px;margin-bottom:1rem}
+.eval-feedback-label{font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px}
+.eval-feedback{font-size:13px;line-height:1.6}
+.feedback-positive{color:#0F6E56}
+.feedback-improve{color:#633806}
+.feedback-tag{
+  display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;
+  font-weight:500;margin-right:4px;margin-bottom:4px;
+}
+.overall-score-card{
+  background:linear-gradient(135deg,#0E2820 0%,#1A5F4A 100%);
+  color:#fff;border-radius:var(--radius);padding:2rem;margin-bottom:2rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.overall-label{font-size:13px;opacity:0.7;margin-bottom:8px}
+.overall-value{font-family:'Fraunces',serif;font-size:3.5rem;font-weight:600}
+.overall-meta{font-size:13px;opacity:0.6;margin-top:4px}
+.radar-visual{display:flex;flex-direction:column;gap:10px;min-width:240px}
+.skill-bar-row{display:flex;align-items:center;gap:10px}
+.skill-name{font-size:12px;opacity:0.7;min-width:80px;text-align:right}
+.skill-track{flex:1;height:6px;background:rgba(255,255,255,0.15);border-radius:3px}
+.skill-fill{height:100%;border-radius:3px;background:#5DCAA5;transition:width 1s ease}
+
+/* ─────────── HISTORY TABLE ─────────── */
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+thead th{
+  font-size:12px;font-weight:600;color:var(--ink3);letter-spacing:0.04em;
+  text-transform:uppercase;padding:10px 16px;border-bottom:1px solid var(--border);
+  text-align:left;background:var(--surface2);
+}
+tbody td{padding:14px 16px;border-bottom:1px solid var(--border2);font-size:14px;color:var(--ink2)}
+tbody tr:hover{background:var(--surface2)}
+tbody tr:last-child td{border-bottom:none}
+
+/* ─────────── LOADING ─────────── */
+.loading-overlay{
+  position:fixed;inset:0;background:rgba(250,250,248,0.9);
+  display:none;align-items:center;justify-content:center;z-index:100;
+  flex-direction:column;gap:1rem;backdrop-filter:blur(4px);
+}
+.loading-overlay.show{display:flex}
+.spinner{
+  width:40px;height:40px;border:3px solid var(--surface3);
+  border-top-color:var(--accent);border-radius:50%;
+  animation:spin 0.8s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-text{font-size:14px;color:var(--ink3)}
+
+/* ─── TOAST ─── */
+.toast{
+  position:fixed;bottom:2rem;right:2rem;z-index:200;
+  background:var(--ink);color:#fff;border-radius:var(--radius-sm);
+  padding:12px 20px;font-size:14px;
+  transform:translateY(100px);opacity:0;
+  transition:all 0.3s ease;max-width:360px;
+}
+.toast.show{transform:translateY(0);opacity:1}
+.toast.success{background:var(--accent)}
+.toast.error{background:var(--red)}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+  .auth-layout{grid-template-columns:1fr}
+  .auth-panel{display:none}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .sidebar{width:240px}
+}
+@media(max-width:640px){
+  .stats-grid{grid-template-columns:1fr}
+  #page-app{flex-direction:column}
+  .sidebar{width:100%;height:auto;position:relative}
+  .main-content{height:auto}
+}
+
+/* ─── WELCOME BANNER ─── */
+.welcome-banner{
+  background:linear-gradient(135deg,#0E2820 0%,#1A5F4A 100%);
+  color:#fff;border-radius:var(--radius);padding:1.75rem 2rem;
+  margin-bottom:2rem;display:flex;align-items:center;justify-content:space-between;
+}
+.welcome-banner h2{font-size:1.4rem;margin-bottom:4px}
+.welcome-banner p{font-size:14px;opacity:0.7}
+
+/* ─── TAGS ─── */
+.tag{
+  display:inline-block;padding:3px 10px;border-radius:4px;
+  font-size:12px;font-weight:500;background:var(--surface2);color:var(--ink2);
+}
+
+/* ─── HINT BOX ─── */
+.hint-box{
+  background:var(--accent-pale);border:1px solid rgba(42,128,96,0.2);
+  border-radius:var(--radius-sm);padding:0.75rem 1rem;
+  font-size:13px;color:var(--accent);display:flex;gap:8px;align-items:flex-start;
+  margin-top:1rem;
+}
+
+/* ─── FILTER PILLS ─── */
+.filter-pill{
+  background:#fff;border:1.5px solid var(--surface3);color:var(--ink2);
+  border-radius:100px;padding:6px 16px;font-family:'DM Sans',sans-serif;
+  font-size:13px;font-weight:500;cursor:pointer;transition:all 0.15s;
+}
+.filter-pill:hover{border-color:var(--accent2);color:var(--accent)}
+.filter-pill.active{background:var(--accent);border-color:var(--accent);color:#fff}
+#course-search:focus{border-color:var(--accent2);box-shadow:0 0 0 3px rgba(42,128,96,0.1);outline:none}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════
+     LANDING PAGE
+═════════════════════════════════════ -->
+<div id="page-landing" class="page active">
+
+  <!-- Animated particle canvas -->
+  <canvas id="royal-canvas" style="position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0.5"></canvas>
+
+  <!-- Decorative corner ornaments -->
+  <svg class="royal-corner tl" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2 2 L2 40 M2 2 L40 2" stroke="#C9A84C" stroke-width="1.5" opacity="0.6"/>
+    <path d="M2 2 L18 18" stroke="#C9A84C" stroke-width="0.8" opacity="0.4"/>
+    <circle cx="2" cy="2" r="3" fill="#C9A84C" opacity="0.7"/>
+    <circle cx="40" cy="2" r="1.5" fill="#C9A84C" opacity="0.4"/>
+    <circle cx="2" cy="40" r="1.5" fill="#C9A84C" opacity="0.4"/>
+    <path d="M8 2 L8 8 L2 8" stroke="#C9A84C" stroke-width="0.6" opacity="0.3" fill="none"/>
+  </svg>
+  <svg class="royal-corner tr" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2 2 L2 40 M2 2 L40 2" stroke="#C9A84C" stroke-width="1.5" opacity="0.6"/>
+    <path d="M2 2 L18 18" stroke="#C9A84C" stroke-width="0.8" opacity="0.4"/>
+    <circle cx="2" cy="2" r="3" fill="#C9A84C" opacity="0.7"/>
+    <circle cx="40" cy="2" r="1.5" fill="#C9A84C" opacity="0.4"/>
+    <circle cx="2" cy="40" r="1.5" fill="#C9A84C" opacity="0.4"/>
+  </svg>
+  <svg class="royal-corner bl" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2 2 L2 40 M2 2 L40 2" stroke="#C9A84C" stroke-width="1.5" opacity="0.6"/>
+    <circle cx="2" cy="2" r="3" fill="#C9A84C" opacity="0.7"/>
+    <circle cx="40" cy="2" r="1.5" fill="#C9A84C" opacity="0.4"/>
+    <circle cx="2" cy="40" r="1.5" fill="#C9A84C" opacity="0.4"/>
+  </svg>
+  <svg class="royal-corner br" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2 2 L2 40 M2 2 L40 2" stroke="#C9A84C" stroke-width="1.5" opacity="0.6"/>
+    <circle cx="2" cy="2" r="3" fill="#C9A84C" opacity="0.7"/>
+    <circle cx="40" cy="2" r="1.5" fill="#C9A84C" opacity="0.4"/>
+    <circle cx="2" cy="40" r="1.5" fill="#C9A84C" opacity="0.4"/>
+  </svg>
+
+  <!-- Vertical side lines -->
+  <div class="royal-vline left"></div>
+  <div class="royal-vline right"></div>
+
+  <!-- Main content -->
+  <div class="royal-content">
+
+    <!-- ══ LOGO MARK (SVG Crown + Neural network) ══ -->
+    <div class="royal-logo-mark">
+      <svg viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg" width="110" height="110">
+        <defs>
+          <radialGradient id="crownGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#F5E6B8"/>
+            <stop offset="50%" stop-color="#C9A84C"/>
+            <stop offset="100%" stop-color="#8B6914"/>
+          </radialGradient>
+          <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#C9A84C" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#C9A84C" stop-opacity="0"/>
+          </radialGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="2.5" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <!-- Outer glow circle -->
+        <circle cx="55" cy="55" r="52" fill="url(#glowGrad)"/>
+        <!-- Outer ring -->
+        <circle cx="55" cy="55" r="50" stroke="url(#crownGrad)" stroke-width="0.8" fill="none" opacity="0.5"/>
+        <!-- Inner ring -->
+        <circle cx="55" cy="55" r="44" stroke="url(#crownGrad)" stroke-width="0.4" fill="none" opacity="0.3"/>
+
+        <!-- Shield / Crest base -->
+        <path d="M55 18 L82 30 L82 58 Q82 76 55 90 Q28 76 28 58 L28 30 Z"
+              fill="none" stroke="url(#crownGrad)" stroke-width="1.5" opacity="0.8"/>
+        <path d="M55 22 L78 33 L78 57 Q78 73 55 86 Q32 73 32 57 L32 33 Z"
+              fill="rgba(201,168,76,0.06)"/>
+
+        <!-- Crown shape inside shield -->
+        <g filter="url(#glow)">
+          <!-- Crown base -->
+          <rect x="39" y="63" width="32" height="7" rx="1.5" fill="url(#crownGrad)"/>
+          <!-- Crown body -->
+          <path d="M39 63 L39 52 L46 58 L55 44 L64 58 L71 52 L71 63 Z"
+                fill="url(#crownGrad)"/>
+          <!-- Crown top gems -->
+          <circle cx="55" cy="43" r="3.5" fill="#F5E6B8" opacity="0.95"/>
+          <circle cx="39" cy="51" r="2.5" fill="#F5E6B8" opacity="0.8"/>
+          <circle cx="71" cy="51" r="2.5" fill="#F5E6B8" opacity="0.8"/>
+          <!-- Crown gem accents -->
+          <circle cx="47" cy="57" r="1.5" fill="rgba(255,255,255,0.5)"/>
+          <circle cx="55" cy="55" r="1.5" fill="rgba(255,255,255,0.5)"/>
+          <circle cx="63" cy="57" r="1.5" fill="rgba(255,255,255,0.5)"/>
+        </g>
+
+        <!-- Neural network nodes around the crest -->
+        <g opacity="0.55">
+          <circle cx="55" cy="18" r="2" fill="#C9A84C"/>
+          <circle cx="82" cy="30" r="2" fill="#C9A84C"/>
+          <circle cx="82" cy="55" r="2" fill="#C9A84C"/>
+          <circle cx="55" cy="90" r="2" fill="#C9A84C"/>
+          <circle cx="28" cy="55" r="2" fill="#C9A84C"/>
+          <circle cx="28" cy="30" r="2" fill="#C9A84C"/>
+          <!-- Connection lines -->
+          <line x1="55" y1="18" x2="82" y2="30" stroke="#C9A84C" stroke-width="0.6"/>
+          <line x1="82" y1="30" x2="82" y2="55" stroke="#C9A84C" stroke-width="0.6"/>
+          <line x1="82" y1="55" x2="55" y2="90" stroke="#C9A84C" stroke-width="0.6"/>
+          <line x1="55" y1="90" x2="28" y2="55" stroke="#C9A84C" stroke-width="0.6"/>
+          <line x1="28" y1="55" x2="28" y2="30" stroke="#C9A84C" stroke-width="0.6"/>
+          <line x1="28" y1="30" x2="55" y2="18" stroke="#C9A84C" stroke-width="0.6"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Status badge -->
+    <div class="royal-badge">
+      <span class="royal-badge-dot"></span>
+      AI · RAG · LLM Powered
+    </div>
+
+    <!-- Brand name -->
+    <h1 class="royal-h1">INTELLIHIRE</h1>
+    <p class="royal-h1-sub">The Royal Academy of AI Interview Mastery</p>
+
+    <!-- Ornamental divider -->
+    <div class="royal-divider">
+      <div class="royal-divider-line"></div>
+      <div class="royal-divider-diamond"></div>
+      <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
+        <path d="M10 1 L19 7 L10 13 L1 7 Z" stroke="#C9A84C" stroke-width="0.8" fill="rgba(201,168,76,0.1)"/>
+        <circle cx="10" cy="7" r="2" fill="#C9A84C" opacity="0.7"/>
+      </svg>
+      <div class="royal-divider-diamond"></div>
+      <div class="royal-divider-line"></div>
+    </div>
+
+    <!-- Tagline -->
+    <p class="royal-sub">
+      Ascend your career with AI-powered mock interviews, RAG-curated knowledge, 
+      and LLM evaluation that delivers precision feedback worthy of a grand institution.
+    </p>
+
+    <!-- CTA Buttons -->
+    <div class="royal-actions">
+      <button class="btn-royal-primary" onclick="showPage('signup')">
+        &#9670;&ensp;Begin Your Journey&ensp;&#9670;
+      </button>
+      <button class="btn-royal-outline" onclick="showPage('login')">
+        Sign In to Chamber
+      </button>
+    </div>
+
+    <!-- Royal Stats -->
+    <div class="royal-stats">
+      <div class="royal-stat">
+        <span class="royal-stat-val">20</span>
+        <span class="royal-stat-lbl">AI Disciplines</span>
+      </div>
+      <div class="royal-stat">
+        <span class="royal-stat-val">160+</span>
+        <span class="royal-stat-lbl">Expert Questions</span>
+      </div>
+      <div class="royal-stat">
+        <span class="royal-stat-val">LLM</span>
+        <span class="royal-stat-lbl">AI Evaluation</span>
+      </div>
+      <div class="royal-stat">
+        <span class="royal-stat-val">RAG</span>
+        <span class="royal-stat-lbl">Knowledge Engine</span>
+      </div>
+    </div>
+
+    <!-- Feature pills -->
+    <div class="royal-features">
+      <div class="royal-feature-pill">
+        <span class="royal-feature-pill-icon">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </span>
+        RAG-Powered Questions
+      </div>
+      <div class="royal-feature-pill">
+        <span class="royal-feature-pill-icon">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </span>
+        LLM Answer Evaluation
+      </div>
+      <div class="royal-feature-pill">
+        <span class="royal-feature-pill-icon">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </span>
+        Instant Precision Scoring
+      </div>
+      <div class="royal-feature-pill">
+        <span class="royal-feature-pill-icon">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </span>
+        2-Minute Timed Sessions
+      </div>
+      <div class="royal-feature-pill">
+        <span class="royal-feature-pill-icon">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </span>
+        20 AI Course Tracks
+      </div>
+    </div>
+
+  </div><!-- /royal-content -->
+
+  <!-- Bottom footer -->
+  <div class="royal-footer">Intellihire &mdash; Est. 2025 &mdash; The Standard of AI Interview Excellence</div>
+
+</div>
+
+<!-- ════════════════════════════════════
+     SIGN UP PAGE  (default entry point)
+═════════════════════════════════════ -->
+<div id="page-signup" class="page">
+  <div class="auth-layout">
+
+    <!-- Left decorative panel -->
+    <div class="auth-panel">
+      <div class="auth-panel-logo">
+        <div class="logo-icon" style="background:linear-gradient(135deg,#C9A84C,#8B6914);display:flex;align-items:center;justify-content:center">
+          <svg width="20" height="20" viewBox="0 0 36 36" fill="none">
+            <rect x="9" y="22" width="18" height="5" rx="1" fill="#FDF8EC"/>
+            <path d="M9 22 L9 15 L14 19 L18 10 L22 19 L27 15 L27 22 Z" fill="#FDF8EC"/>
+            <circle cx="18" cy="9.5" r="2.5" fill="#FDF8EC"/>
+            <circle cx="9" cy="14.5" r="1.8" fill="#FDF8EC" opacity="0.85"/>
+            <circle cx="27" cy="14.5" r="1.8" fill="#FDF8EC" opacity="0.85"/>
+          </svg>
+        </div>
+        Intellihire
+      </div>
+      <div class="auth-panel-copy">
+        <h2>Prepare smarter,<br>not harder.</h2>
+        <p>Our RAG engine retrieves questions from curated AI knowledge bases — so every session targets what actually matters in real interviews.</p>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:2rem">
+          <div class="auth-feature-row">
+            <div class="auth-feature-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <div>
+              <div style="font-size:13px;font-weight:600;color:#fff">RAG-Powered Questions</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.55);margin-top:2px">Questions pulled from curated AI knowledge bases — no hallucinations</div>
+            </div>
+          </div>
+          <div class="auth-feature-row">
+            <div class="auth-feature-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div>
+              <div style="font-size:13px;font-weight:600;color:#fff">LLM Answer Evaluation</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.55);margin-top:2px">Real AI scores your answers on depth, accuracy, and examples</div>
+            </div>
+          </div>
+          <div class="auth-feature-row">
+            <div class="auth-feature-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <div>
+              <div style="font-size:13px;font-weight:600;color:#fff">12 AI Course Tracks</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.55);margin-top:2px">From ML fundamentals to LLMs, GenAI, MLOps & beyond</div>
+            </div>
+          </div>
+        </div>
+        <div class="auth-testimonial" style="margin-top:2rem">
+          <p>"Intellihire helped me land my ML Engineer role at a top-3 tech company. The feedback was shockingly precise."</p>
+          <cite>— Priya M., ML Engineer at a Fortune 50</cite>
+        </div>
+      </div>
+      <div style="color:rgba(255,255,255,0.35);font-size:12px">© 2025 Intellihire. All rights reserved.</div>
+    </div>
+
+    <!-- Right form panel -->
+    <div class="auth-form-panel">
+      <div class="auth-card">
+
+        <!-- Header -->
+        <div style="margin-bottom:2rem">
+          <div style="display:inline-flex;align-items:center;gap:8px;background:#E1F5EE;border-radius:100px;padding:5px 14px;margin-bottom:1.25rem">
+            <span style="width:6px;height:6px;border-radius:50%;background:#1D9E75;display:inline-block;animation:pulse 2s infinite"></span>
+            <span style="font-size:12px;font-weight:600;color:#0F6E56;letter-spacing:0.04em">FREE TO START</span>
+          </div>
+          <h1 class="auth-title">Create your account</h1>
+          <p class="auth-subtitle">Join thousands of candidates preparing for AI roles</p>
+        </div>
+
+        <!-- Error -->
+        <div class="error-msg" id="signup-error">Please fill in all fields correctly.</div>
+
+        <!-- Name + Email row -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+          <div class="form-group" style="margin-bottom:0">
+            <label class="form-label">First Name</label>
+            <input type="text" class="form-input" id="signup-fname" placeholder="Ravi">
+          </div>
+          <div class="form-group" style="margin-bottom:0">
+            <label class="form-label">Last Name</label>
+            <input type="text" class="form-input" id="signup-lname" placeholder="Sharma">
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top:14px">
+          <label class="form-label">Email address</label>
+          <div style="position:relative">
+            <input type="email" class="form-input" id="signup-email" placeholder="ravi@example.com" style="padding-left:40px">
+            <svg style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--ink3)" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <div style="position:relative">
+            <input type="password" class="form-input" id="signup-pass" placeholder="Min. 8 characters" style="padding-left:40px;padding-right:44px" oninput="checkPasswordStrength(this.value)">
+            <svg style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--ink3)" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            <button type="button" onclick="togglePassVisibility('signup-pass',this)" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--ink3);padding:2px">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+          <!-- Password strength bar -->
+          <div style="margin-top:8px;display:flex;gap:4px" id="pw-bars">
+            <div class="pw-bar" id="pw-b1"></div>
+            <div class="pw-bar" id="pw-b2"></div>
+            <div class="pw-bar" id="pw-b3"></div>
+            <div class="pw-bar" id="pw-b4"></div>
+          </div>
+          <div style="font-size:11px;color:var(--ink3);margin-top:4px" id="pw-label">Enter a password</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Target Role</label>
+          <div style="position:relative">
+            <select class="form-select" id="signup-role" style="padding-left:40px">
+              <option value="">Select your target role...</option>
+              <option>Machine Learning Engineer</option>
+              <option>Data Scientist</option>
+              <option>AI Research Scientist</option>
+              <option>NLP Engineer</option>
+              <option>Computer Vision Engineer</option>
+              <option>MLOps Engineer</option>
+              <option>AI Product Manager</option>
+            </select>
+            <svg style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--ink3);pointer-events:none" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          </div>
+        </div>
+
+        <!-- Terms -->
+        <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:1.25rem">
+          <input type="checkbox" id="signup-terms" style="margin-top:3px;accent-color:var(--accent);cursor:pointer">
+          <label for="signup-terms" style="font-size:13px;color:var(--ink3);cursor:pointer;line-height:1.5">
+            I agree to Intellihire's <a href="#" style="color:var(--accent);text-decoration:none">Terms of Service</a> and <a href="#" style="color:var(--accent);text-decoration:none">Privacy Policy</a>
+          </label>
+        </div>
+
+        <button class="btn-submit" onclick="handleSignup()" id="signup-btn">
+          <span id="signup-btn-text">Create Free Account →</span>
+        </button>
+
+        <!-- Divider -->
+        <div class="divider">or sign in with existing account</div>
+
+        <!-- Login CTA — prominent at bottom -->
+        <div style="background:var(--surface2);border:1.5px solid var(--surface3);border-radius:var(--radius-sm);padding:14px 18px;display:flex;align-items:center;justify-content:space-between">
+          <span style="font-size:14px;color:var(--ink2)">Already have an account?</span>
+          <button onclick="showPage('login')" style="background:var(--accent);color:#fff;border:none;border-radius:6px;padding:8px 18px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:background 0.2s" onmouseover="this.style.background='var(--accent2)'" onmouseout="this.style.background='var(--accent)'">
+            Log In →
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     LOGIN PAGE
+═════════════════════════════════════ -->
+<div id="page-login" class="page">
+  <div class="auth-layout">
+
+    <!-- Left decorative panel -->
+    <div class="auth-panel">
+      <div class="auth-panel-logo">
+        <div class="logo-icon" style="background:linear-gradient(135deg,#C9A84C,#8B6914);display:flex;align-items:center;justify-content:center">
+          <svg width="20" height="20" viewBox="0 0 36 36" fill="none">
+            <rect x="9" y="22" width="18" height="5" rx="1" fill="#FDF8EC"/>
+            <path d="M9 22 L9 15 L14 19 L18 10 L22 19 L27 15 L27 22 Z" fill="#FDF8EC"/>
+            <circle cx="18" cy="9.5" r="2.5" fill="#FDF8EC"/>
+            <circle cx="9" cy="14.5" r="1.8" fill="#FDF8EC" opacity="0.85"/>
+            <circle cx="27" cy="14.5" r="1.8" fill="#FDF8EC" opacity="0.85"/>
+          </svg>
+        </div>
+        Intellihire
+      </div>
+      <div class="auth-panel-copy">
+        <h2>Welcome back.<br>Keep leveling up.</h2>
+        <p>Your practice history, scores, and improvement trajectory are all saved — pick up exactly where you left off.</p>
+        <!-- Stats showcase -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:2rem">
+          <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:1rem">
+            <div style="font-family:'Fraunces',serif;font-size:1.8rem;font-weight:600;color:#9FE1CB">12</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.55);margin-top:2px">AI course tracks</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:1rem">
+            <div style="font-family:'Fraunces',serif;font-size:1.8rem;font-weight:600;color:#9FE1CB">100+</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.55);margin-top:2px">Expert questions</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:1rem">
+            <div style="font-family:'Fraunces',serif;font-size:1.8rem;font-weight:600;color:#9FE1CB">AI</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.55);margin-top:2px">LLM scoring engine</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:1rem">
+            <div style="font-family:'Fraunces',serif;font-size:1.8rem;font-weight:600;color:#9FE1CB">RAG</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.55);margin-top:2px">Knowledge retrieval</div>
+          </div>
+        </div>
+        <div class="auth-testimonial" style="margin-top:1.5rem">
+          <p>"After 3 sessions, my answer quality jumped significantly. The AI feedback caught gaps I didn't even know I had."</p>
+          <cite>— Aditya K., Senior Data Scientist</cite>
+        </div>
+      </div>
+      <div style="color:rgba(255,255,255,0.35);font-size:12px">© 2025 Intellihire. All rights reserved.</div>
+    </div>
+
+    <!-- Right form panel -->
+    <div class="auth-form-panel">
+      <div class="auth-card">
+
+        <!-- Header -->
+        <div style="margin-bottom:2rem">
+          <div style="width:52px;height:52px;border-radius:14px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
+          </div>
+          <h1 class="auth-title">Sign in to Intellihire</h1>
+          <p class="auth-subtitle">Continue your AI interview preparation journey</p>
+        </div>
+
+        <!-- Demo hint -->
+        <div style="background:var(--accent-pale);border:1px solid rgba(42,128,96,0.2);border-radius:var(--radius-sm);padding:10px 14px;margin-bottom:1.25rem;display:flex;align-items:center;gap:10px">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+          <span style="font-size:12.5px;color:var(--accent)"><strong>Demo:</strong> demo@intellihire.ai &nbsp;/&nbsp; demo1234</span>
+        </div>
+
+        <!-- Error -->
+        <div class="error-msg" id="login-error">Incorrect email or password. Please try again.</div>
+
+        <div class="form-group">
+          <label class="form-label">Email address</label>
+          <div style="position:relative">
+            <input type="email" class="form-input" id="login-email" placeholder="your@email.com" value="demo@intellihire.ai" style="padding-left:40px">
+            <svg style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--ink3)" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            <label class="form-label" style="margin-bottom:0">Password</label>
+            <a href="#" style="font-size:12px;color:var(--accent);text-decoration:none" onclick="showForgotToast()">Forgot password?</a>
+          </div>
+          <div style="position:relative">
+            <input type="password" class="form-input" id="login-pass" placeholder="Your password" value="demo1234" style="padding-left:40px;padding-right:44px">
+            <svg style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--ink3)" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            <button type="button" onclick="togglePassVisibility('login-pass',this)" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--ink3);padding:2px">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Remember me -->
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:1.5rem">
+          <input type="checkbox" id="login-remember" checked style="accent-color:var(--accent);cursor:pointer">
+          <label for="login-remember" style="font-size:13px;color:var(--ink3);cursor:pointer">Keep me signed in</label>
+        </div>
+
+        <button class="btn-submit" onclick="handleLogin()" id="login-btn">
+          <span id="login-btn-text">Sign In →</span>
+        </button>
+
+        <!-- Divider -->
+        <div class="divider">new to Intellihire?</div>
+
+        <!-- Signup CTA — prominent at bottom -->
+        <div style="background:var(--surface2);border:1.5px solid var(--surface3);border-radius:var(--radius-sm);padding:14px 18px;display:flex;align-items:center;justify-content:space-between">
+          <div>
+            <div style="font-size:14px;font-weight:500;color:var(--ink)">Don't have an account?</div>
+            <div style="font-size:12px;color:var(--ink3);margin-top:2px">Sign up free — no credit card needed</div>
+          </div>
+          <button onclick="showPage('signup')" style="background:var(--ink);color:#fff;border:none;border-radius:6px;padding:8px 18px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:background 0.2s;white-space:nowrap" onmouseover="this.style.background='var(--ink2)'" onmouseout="this.style.background='var(--ink)'">
+            Create Account
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     MAIN APP
+═════════════════════════════════════ -->
+<div id="page-app" class="page">
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <div class="logo-icon" style="background:linear-gradient(135deg,#C9A84C,#8B6914);display:flex;align-items:center;justify-content:center">
+          <svg width="18" height="18" viewBox="0 0 36 36" fill="none">
+            <rect x="9" y="22" width="18" height="5" rx="1" fill="#FDF8EC"/>
+            <path d="M9 22 L9 15 L14 19 L18 10 L22 19 L27 15 L27 22 Z" fill="#FDF8EC"/>
+            <circle cx="18" cy="9.5" r="2.5" fill="#FDF8EC" opacity="0.95"/>
+            <circle cx="9" cy="14.5" r="1.8" fill="#FDF8EC" opacity="0.8"/>
+            <circle cx="27" cy="14.5" r="1.8" fill="#FDF8EC" opacity="0.8"/>
+          </svg>
+        </div>
+        Intellihire
+      </div>
+    </div>
+    <div class="sidebar-nav">
+      <div class="nav-section-label">Main</div>
+      <div class="nav-item active" onclick="showSection('dashboard')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </div>
+      <div class="nav-item" onclick="showSection('courses')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        Course Tracks
+      </div>
+      <div class="nav-item" onclick="showSection('history')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        History
+      </div>
+      <div class="nav-section-label" style="margin-top:1rem">Account</div>
+      <div class="nav-item" onclick="showSection('profile')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        Profile
+      </div>
+      <div class="nav-item" onclick="logout()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+        Sign Out
+      </div>
+    </div>
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="avatar" id="sidebar-avatar">U</div>
+        <div>
+          <div class="user-name" id="sidebar-name">User</div>
+          <div class="user-email" id="sidebar-email">user@example.com</div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="main-content">
+
+    <!-- DASHBOARD -->
+    <div id="section-dashboard" class="content-section active">
+      <div class="welcome-banner">
+        <div>
+          <h2 id="welcome-name">Welcome back! 👋</h2>
+          <p>Ready to sharpen your AI interview skills today?</p>
+        </div>
+        <button class="btn-primary" onclick="showSection('courses')">Start Interview →</button>
+      </div>
+      <div class="section-header">
+        <div class="section-title">Your Progress</div>
+        <div class="section-subtitle">Track your performance across all AI tracks</div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Sessions Completed</div>
+          <div class="stat-value" id="stat-sessions">0</div>
+          <div class="stat-meta"><span class="up">↑ Keep going!</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Avg. Score</div>
+          <div class="stat-value" id="stat-avg">—</div>
+          <div class="stat-meta">Out of 100</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Questions Answered</div>
+          <div class="stat-value" id="stat-questions">0</div>
+          <div class="stat-meta">Total practice</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Best Score</div>
+          <div class="stat-value" id="stat-best">—</div>
+          <div class="stat-meta">Personal record</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Recommended for You</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px" id="recommended-courses"></div>
+      </div>
+      <div class="card" id="recent-card" style="display:none">
+        <div class="card-title">Recent Sessions</div>
+        <div id="recent-sessions"></div>
+      </div>
+    </div>
+
+    <!-- COURSE TRACKS -->
+    <div id="section-courses" class="content-section">
+      <div class="section-header">
+        <div class="section-title">Course Interview Tracks</div>
+        <div class="section-subtitle" id="courses-count-label">20 AI specializations — click any card to start your interview</div>
+      </div>
+
+      <!-- Search + Filter bar -->
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:1.75rem;align-items:center">
+        <div style="position:relative;flex:1;min-width:220px">
+          <input type="text" id="course-search" placeholder="Search courses..."
+            oninput="filterCourses()"
+            style="width:100%;height:42px;border:1.5px solid var(--surface3);border-radius:var(--radius-sm);
+                   padding:0 14px 0 40px;font-family:'DM Sans',sans-serif;font-size:14px;
+                   color:var(--ink);outline:none;background:#fff;transition:border-color 0.2s">
+          <svg style="position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--ink3)"
+               width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap" id="filter-pills">
+          <button class="filter-pill active" onclick="setFilter('All',this)">All</button>
+          <button class="filter-pill" onclick="setFilter('Beginner',this)">Beginner</button>
+          <button class="filter-pill" onclick="setFilter('Intermediate',this)">Intermediate</button>
+          <button class="filter-pill" onclick="setFilter('Advanced',this)">Advanced</button>
+        </div>
+      </div>
+
+      <div class="courses-grid" id="courses-grid"></div>
+      <div id="no-courses-msg" style="display:none;text-align:center;padding:3rem;color:var(--ink3)">
+        No courses match your search. <a href="#" onclick="clearCourseFilter()" style="color:var(--accent)">Clear filters</a>
+      </div>
+    </div>
+
+    <!-- INTERVIEW (in-session) -->
+    <div id="section-interview" class="content-section" style="padding:0">
+      <div class="interview-header">
+        <div>
+          <div style="font-size:13px;font-weight:600;color:var(--ink)" id="interview-course-name">—</div>
+          <div style="font-size:12px;color:var(--ink3)" id="interview-track">AI Interview</div>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-label">
+            <span>Question <span id="q-current">1</span> of <span id="q-total">5</span></span>
+            <span id="q-pct">20%</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:20%"></div></div>
+        </div>
+        <div class="timer-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <span id="timer-display">02:00</span>
+        </div>
+      </div>
+      <div class="interview-body">
+        <div id="interview-q-wrap">
+          <div class="q-number" id="q-num-label">Question 1 of 5</div>
+          <div class="q-text" id="q-text">Loading question...</div>
+          <div class="q-context" id="q-context" style="display:none"></div>
+          <textarea class="answer-area" id="answer-area" placeholder="Type your answer here. Be specific — mention frameworks, techniques, or examples where relevant..."></textarea>
+          <div class="interview-actions">
+            <div style="display:flex;gap:10px">
+              <button class="btn-secondary" onclick="skipQuestion()">Skip</button>
+              <button class="btn-accent" id="submit-btn" onclick="submitAnswer()">Submit Answer →</button>
+            </div>
+          </div>
+        </div>
+        <div id="interview-complete" style="display:none;text-align:center;padding:3rem 0">
+          <div style="font-size:3rem;margin-bottom:1rem">🎉</div>
+          <h2 style="font-size:1.8rem;margin-bottom:0.5rem">Interview Complete!</h2>
+          <p style="color:var(--ink3);margin-bottom:2rem">Your answers are being evaluated by our AI engine...</p>
+          <button class="btn-accent" onclick="showResults()">View Results →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div id="section-results" class="content-section">
+      <div class="section-header">
+        <div class="section-title">Interview Results</div>
+        <div class="section-subtitle" id="results-subtitle">Session complete — here's your AI evaluation</div>
+      </div>
+      <div class="overall-score-card">
+        <div>
+          <div class="overall-label">Overall Score</div>
+          <div class="overall-value" id="overall-score">—</div>
+          <div class="overall-meta" id="overall-meta">—</div>
+        </div>
+        <div class="radar-visual">
+          <div class="skill-bar-row"><span class="skill-name">Concepts</span><div class="skill-track"><div class="skill-fill" id="skill-concepts" style="width:0%"></div></div></div>
+          <div class="skill-bar-row"><span class="skill-name">Depth</span><div class="skill-track"><div class="skill-fill" id="skill-depth" style="width:0%"></div></div></div>
+          <div class="skill-bar-row"><span class="skill-name">Accuracy</span><div class="skill-track"><div class="skill-fill" id="skill-accuracy" style="width:0%"></div></div></div>
+          <div class="skill-bar-row"><span class="skill-name">Examples</span><div class="skill-track"><div class="skill-fill" id="skill-examples" style="width:0%"></div></div></div>
+        </div>
+      </div>
+      <div id="eval-list"></div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <button class="btn-accent" onclick="showSection('courses')">Practice Again →</button>
+        <button class="btn-secondary" onclick="showSection('history')">View History</button>
+      </div>
+    </div>
+
+    <!-- HISTORY -->
+    <div id="section-history" class="content-section">
+      <div class="section-header">
+        <div class="section-title">Interview History</div>
+        <div class="section-subtitle">All your completed sessions</div>
+      </div>
+      <div class="card">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Course</th>
+                <th>Questions</th>
+                <th>Score</th>
+                <th>Grade</th>
+              </tr>
+            </thead>
+            <tbody id="history-tbody">
+              <tr><td colspan="5" style="text-align:center;color:var(--ink3);padding:2rem">No sessions yet. Start your first interview!</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROFILE -->
+    <div id="section-profile" class="content-section">
+      <div class="section-header">
+        <div class="section-title">Your Profile</div>
+        <div class="section-subtitle">Manage your account and preferences</div>
+      </div>
+      <div class="card" style="max-width:500px">
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:1.5rem">
+          <div class="avatar" id="profile-avatar" style="width:64px;height:64px;font-size:22px">U</div>
+          <div>
+            <div style="font-weight:600;font-size:1.1rem" id="profile-name">User Name</div>
+            <div style="color:var(--ink3);font-size:14px" id="profile-email">user@example.com</div>
+            <div style="margin-top:4px"><span class="tag" id="profile-role">—</span></div>
+          </div>
+        </div>
+        <div style="border-top:1px solid var(--border2);padding-top:1.25rem">
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-input" id="profile-name-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Target Role</label>
+            <select class="form-select" id="profile-role-select">
+              <option>Machine Learning Engineer</option>
+              <option>Data Scientist</option>
+              <option>AI Research Scientist</option>
+              <option>NLP Engineer</option>
+              <option>Computer Vision Engineer</option>
+              <option>MLOps Engineer</option>
+              <option>AI Product Manager</option>
+            </select>
+          </div>
+          <button class="btn-accent" style="width:auto;padding:10px 24px" onclick="saveProfile()">Save Changes</button>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /main-content -->
+</div><!-- /page-app -->
+
+<!-- Loading Overlay -->
+<div class="loading-overlay" id="loading">
+  <div class="spinner"></div>
+  <div class="loading-text" id="loading-text">Generating personalized questions...</div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ══════════════════════════════════════════
+//  STATE
+// ══════════════════════════════════════════
+let currentUser = null;
+let currentSession = null;
+let sessions = JSON.parse(localStorage.getItem('ih_sessions') || '[]');
+let users = JSON.parse(localStorage.getItem('ih_users') || '[]');
+
+// ══════════════════════════════════════════
+//  COURSES + QUESTION BANK (RAG Knowledge Base)
+// ══════════════════════════════════════════
+const COURSES = [
+  { id:'ml_fundamentals',    name:'Machine Learning Fundamentals',      icon:'🤖', color:'#E1F5EE', iconColor:'#1D9E75', desc:'Supervised & unsupervised learning, bias-variance tradeoff, model evaluation, and core ML algorithms including SVMs, decision trees, and ensembles.', difficulty:'Beginner',     questions:30, tags:['Regression','Classification','Clustering','Evaluation'] },
+  { id:'deep_learning',      name:'Deep Learning & Neural Networks',    icon:'🧠', color:'#EEEDFE', iconColor:'#534AB7', desc:'Backpropagation, CNNs, RNNs, LSTMs, attention mechanisms, optimization techniques, and regularization strategies.', difficulty:'Intermediate', questions:35, tags:['Backprop','CNNs','LSTMs','Optimization'] },
+  { id:'nlp',                name:'Natural Language Processing',        icon:'💬', color:'#E6F1FB', iconColor:'#185FA5', desc:'Tokenization, embeddings, language models, BERT, GPT architectures, NLP pipelines, and modern transformer-based NLP techniques.', difficulty:'Intermediate', questions:30, tags:['BERT','GPT','Embeddings','Transformers'] },
+  { id:'llm',                name:'Large Language Models',              icon:'✨', color:'#FAEEDA', iconColor:'#BA7517', desc:'LLM architecture, pre-training, fine-tuning, RLHF, prompt engineering, RAG, hallucination reduction, and responsible AI practices.', difficulty:'Advanced',     questions:28, tags:['Fine-tuning','RLHF','RAG','Prompting'] },
+  { id:'computer_vision',    name:'Computer Vision',                    icon:'👁️', color:'#FBEAF0', iconColor:'#993556', desc:'Object detection, image segmentation, GANs, diffusion models, vision transformers, and real-world CV system design.', difficulty:'Advanced',     questions:28, tags:['CNNs','ViT','GANs','Detection'] },
+  { id:'mlops',              name:'MLOps & Model Deployment',           icon:'⚙️', color:'#EAF3DE', iconColor:'#3B6D11', desc:'Model serving, CI/CD for ML, data pipelines, feature stores, monitoring, drift detection, and production scaling strategies.', difficulty:'Intermediate', questions:25, tags:['Serving','Monitoring','Pipelines','Docker'] },
+  { id:'reinforcement',      name:'Reinforcement Learning',             icon:'🎮', color:'#FCEBEB', iconColor:'#A32D2D', desc:'MDPs, Q-learning, policy gradient methods, actor-critic architectures, deep RL, and real-world RL applications.', difficulty:'Advanced',     questions:22, tags:['Q-Learning','PPO','Actor-Critic','MDPs'] },
+  { id:'data_science',       name:'Data Science & Analytics',           icon:'📊', color:'#E1F5EE', iconColor:'#085041', desc:'Exploratory data analysis, statistical inference, hypothesis testing, A/B testing, data storytelling, and visualization best practices.', difficulty:'Beginner',     questions:28, tags:['EDA','Statistics','A/B Testing','Pandas'] },
+  { id:'generative_ai',      name:'Generative AI',                      icon:'🎨', color:'#EEEDFE', iconColor:'#3C3489', desc:'VAEs, GANs, diffusion models, text-to-image systems, multi-modal AI, and prompt engineering for creative AI applications.', difficulty:'Advanced',     questions:24, tags:['GANs','Diffusion','VAEs','Multi-modal'] },
+  { id:'ai_ethics',          name:'AI Ethics & Responsible AI',         icon:'⚖️', color:'#F2F1ED', iconColor:'#5F5E5A', desc:'Bias in AI, fairness metrics, explainability (XAI), model governance, regulatory compliance, and safety considerations.', difficulty:'Beginner',     questions:20, tags:['Fairness','Bias','XAI','Governance'] },
+  { id:'graph_ml',           name:'Graph ML & GNNs',                    icon:'🔗', color:'#E6F1FB', iconColor:'#0C447C', desc:'Graph neural networks, message passing, node classification, link prediction, graph transformers, and knowledge graphs.', difficulty:'Advanced',     questions:20, tags:['GCN','GAT','GraphSAGE','Link Prediction'] },
+  { id:'time_series',        name:'Time Series & Forecasting',          icon:'📈', color:'#FAEEDA', iconColor:'#854F0B', desc:'ARIMA, LSTMs for time series, Prophet, anomaly detection, multivariate forecasting, and temporal data leakage prevention.', difficulty:'Intermediate', questions:22, tags:['ARIMA','LSTM','Prophet','Anomaly Detection'] },
+  { id:'prompt_engineering', name:'Prompt Engineering',                 icon:'📝', color:'#E1F5EE', iconColor:'#0F6E56', desc:'Zero-shot, few-shot, chain-of-thought prompting, prompt chaining, structured output, and advanced prompting patterns for production LLM apps.', difficulty:'Beginner',     questions:20, tags:['Zero-shot','CoT','Few-shot','Structured Output'] },
+  { id:'rag_systems',        name:'RAG Systems & Vector Search',        icon:'🔍', color:'#E6F1FB', iconColor:'#1A4A8A', desc:'Retrieval-augmented generation architecture, chunking strategies, embedding models, vector databases, re-ranking, and RAG evaluation.', difficulty:'Intermediate', questions:22, tags:['Embeddings','FAISS','Reranking','Chunking'] },
+  { id:'ai_system_design',   name:'AI System Design',                   icon:'🏗️', color:'#EAF3DE', iconColor:'#2D5A0E', desc:'Designing scalable ML systems, recommendation engines, search systems, real-time inference, and production ML architecture patterns.', difficulty:'Advanced',     questions:20, tags:['Architecture','Scalability','Latency','Design'] },
+  { id:'statistics_prob',    name:'Statistics & Probability for AI',    icon:'📐', color:'#FBEAF0', iconColor:'#7A2040', desc:'Probability distributions, Bayesian inference, statistical tests, MLE, MAP estimation, information theory, and their AI applications.', difficulty:'Intermediate', questions:24, tags:['Bayesian','MLE','Distributions','Hypothesis'] },
+  { id:'feature_engineering',name:'Feature Engineering & Selection',    icon:'🔧', color:'#FAEEDA', iconColor:'#7A4010', desc:'Feature creation, transformation, encoding strategies, dimensionality reduction, feature selection methods, and handling missing data.', difficulty:'Beginner',     questions:22, tags:['PCA','Encoding','Imputation','Selection'] },
+  { id:'transformer_arch',   name:'Transformer Architecture Deep Dive', icon:'⚡', color:'#EEEDFE', iconColor:'#4A35B0', desc:'Multi-head attention, positional encoding, layer normalization, BERT vs GPT architectures, efficient transformers, and scaling laws.', difficulty:'Advanced',     questions:24, tags:['Attention','BERT','GPT','Scaling Laws'] },
+  { id:'ai_agents',          name:'AI Agents & Autonomous Systems',     icon:'🤝', color:'#E1F5EE', iconColor:'#0A5C44', desc:'Agentic AI frameworks, tool use, planning, ReAct pattern, multi-agent systems, memory, and building reliable AI pipelines.', difficulty:'Advanced',     questions:20, tags:['ReAct','Tool Use','Planning','Multi-agent'] },
+  { id:'model_evaluation',   name:'Model Evaluation & Testing',         icon:'🎯', color:'#FCEBEB', iconColor:'#8A2020', desc:'Evaluation metrics, benchmark design, model testing strategies, red-teaming, A/B testing for ML, and evaluation-driven development.', difficulty:'Intermediate', questions:20, tags:['Metrics','Benchmarks','Red-teaming','A/B Testing'] },
+];
+
+// ─── RAG QUESTION BANK ───
+const QUESTION_BANK = {
+  ml_fundamentals: [
+    {q:"Explain the bias-variance tradeoff and how it affects model selection.",hint:"Think about underfitting vs overfitting, and how training/validation error curves help diagnose each.",ctx:"Core concept tested in virtually every ML role interview."},
+    {q:"What is cross-validation, and why is k-fold preferred over a simple train/test split?",hint:"Consider what happens with small datasets and how k-fold gives a better estimate of generalization error.",ctx:"Validation strategy is fundamental — addresses data efficiency and variance reduction."},
+    {q:"Describe gradient descent variants: batch, stochastic, and mini-batch. When would you use each?",hint:"Consider computational efficiency, convergence stability, and memory constraints for each variant.",ctx:"Understanding optimization is essential for any ML role."},
+    {q:"How does regularization (L1 vs L2) prevent overfitting, and what are their key differences?",hint:"L1 leads to sparse solutions — which term forces weights to zero vs. just shrinking them?",ctx:"Mention Lasso/Ridge and their effect on feature selection."},
+    {q:"Explain precision, recall, F1, and ROC-AUC. When would you optimize for each metric?",hint:"Consider class imbalance, false negative cost (medical) vs false positive cost (spam).",ctx:"Classification metrics must be understood in business context."},
+    {q:"What is the curse of dimensionality, and what techniques address it?",hint:"Think about how distance metrics behave in high dimensions and why density becomes sparse.",ctx:"Dimensionality reduction (PCA, t-SNE, UMAP) and feature selection are key responses."},
+    {q:"How does a Random Forest reduce variance compared to a single decision tree?",hint:"Consider bootstrap sampling and random feature subsets — what correlation do these break?",ctx:"Ensemble methods are core ML — interviewers want both intuition and formal understanding."},
+    {q:"Explain gradient boosting. How does XGBoost improve on vanilla gradient boosting?",hint:"Sequential weak learners correcting residuals. XGBoost adds regularization, column subsampling, and approximate split finding.",ctx:"Boosting methods dominate tabular ML competitions — understand bias reduction."},
+  ],
+  deep_learning: [
+    {q:"Explain the vanishing gradient problem and methods to mitigate it.",hint:"Think about how gradients flow through many layers — sigmoid vs ReLU activation properties matter.",ctx:"Classic deep learning problem — mention BatchNorm, residual connections, and activation choices."},
+    {q:"How does batch normalization work, and what are the differences between training and inference?",hint:"Normalize per mini-batch during training; use running statistics at inference.",ctx:"BatchNorm is ubiquitous — the training vs inference difference is frequently tested."},
+    {q:"Explain the Transformer architecture. What makes multi-head self-attention powerful?",hint:"Attention allows every token to attend to every other — think long-range dependencies vs RNNs.",ctx:"Transformers are the backbone of modern AI. Cover Q/K/V matrices and positional encoding."},
+    {q:"What is dropout, and why is it only applied during training?",hint:"During inference you want deterministic outputs. How does scaling compensate?",ctx:"Dropout is a regularization technique — connect to ensemble learning."},
+    {q:"Compare CNNs and Vision Transformers (ViT) for image classification. What are the trade-offs?",hint:"CNNs have inductive bias (locality); ViTs are more flexible but need more data.",ctx:"Modern vision mixes both — mention DeiT and Swin Transformer."},
+    {q:"What is knowledge distillation and why is it used in production ML?",hint:"A small student model learns from soft probability outputs of a larger teacher.",ctx:"Model compression is key for deployment — soft labels transfer more information."},
+    {q:"Describe the Adam optimizer. Why does it often outperform plain SGD?",hint:"Adam maintains per-parameter learning rates adapted via first and second moment estimates.",ctx:"Discuss weight decay, learning rate scheduling, and when SGD might be preferred."},
+    {q:"What are residual connections (skip connections) and why do they help train very deep networks?",hint:"Skip connections allow gradients to flow directly, preventing the degradation problem.",ctx:"ResNets enabled training of 100+ layer networks — understand the identity shortcut."},
+  ],
+  nlp: [
+    {q:"How do word2vec and GloVe embeddings differ in their training objectives?",hint:"word2vec is predictive; GloVe is count-based (factorizes a co-occurrence matrix).",ctx:"Address analogy tasks, limitations with polysemy, and how contextual models solve this."},
+    {q:"Explain BERT's masked language model (MLM) and next sentence prediction (NSP) objectives.",hint:"MLM randomly masks tokens for bidirectional context; NSP trains sentence-pair relationships.",ctx:"Discuss how MLM enables bidirectional representations unlike GPT."},
+    {q:"What is the difference between encoder-only, decoder-only, and encoder-decoder transformer models?",hint:"BERT=encoder only; GPT=decoder only; T5=encoder-decoder for seq2seq tasks.",ctx:"Architecture selection depends on task — give concrete model examples for each."},
+    {q:"Explain tokenization strategies: BPE, WordPiece, and SentencePiece. How do you choose?",hint:"All are subword tokenization — balance vocabulary size with coverage of rare words.",ctx:"Discuss vocabulary size trade-offs and handling of out-of-vocabulary tokens."},
+    {q:"What is named entity recognition (NER)? How would you approach a low-resource language NER task?",hint:"Consider cross-lingual models (mBERT, XLM-R), transfer learning, and data augmentation.",ctx:"Low-resource NLP tests practical thinking — mention annotation and synthetic data."},
+    {q:"How does attention masking work in the transformer decoder during training and inference?",hint:"Causal masking prevents attending to future tokens — forces left-to-right generation.",ctx:"Causal vs bidirectional attention is a key distinction — connect to teacher forcing."},
+    {q:"What is semantic similarity, and how would you build a sentence similarity model?",hint:"Siamese networks, bi-encoders (sentence-BERT), cross-encoders — discuss speed vs accuracy trade-off.",ctx:"Sentence embeddings power search, deduplication, and question answering systems."},
+    {q:"Explain the challenges of machine translation and how modern neural MT systems address them.",hint:"Alignment, rare words, context, fluency vs faithfulness — attention mechanisms and beam search.",ctx:"MT tests sequence-to-sequence understanding — discuss BLEU score limitations too."},
+  ],
+  llm: [
+    {q:"Explain Retrieval-Augmented Generation (RAG). What are its advantages over pure fine-tuning?",hint:"RAG retrieves relevant documents at inference, reducing hallucination and enabling knowledge updates.",ctx:"Discuss chunking strategies, embedding quality, and re-ranking."},
+    {q:"What are the key challenges in prompt engineering? What strategies reduce hallucination?",hint:"Chain-of-thought, few-shot examples, grounding to retrieved context, explicit uncertainty instructions.",ctx:"Mention self-consistency, constitutional AI, and verification strategies."},
+    {q:"How does LoRA (Low-Rank Adaptation) work for efficient fine-tuning of LLMs?",hint:"Freeze pre-trained weights; inject trainable low-rank decomposition matrices into attention layers.",ctx:"PEFT methods are standard — discuss rank selection, target modules, and QLoRA."},
+    {q:"What is RLHF and how is it used to align language models with human preferences?",hint:"Three stages: supervised fine-tuning, reward model training on preferences, RL with PPO.",ctx:"RLHF is central to aligned LLMs — discuss InstructGPT and reward hacking challenges."},
+    {q:"Explain emergent abilities in LLMs and what scaling laws research tells us.",hint:"Some capabilities appear only above certain parameter thresholds. Scaling laws predict performance from compute/data.",ctx:"Distinguish sharp transitions from gradual improvement with better evaluation metrics."},
+    {q:"How would you evaluate a RAG system? What metrics would you use?",hint:"Retrieval quality (recall@k, MRR) and generation quality (faithfulness, answer relevance, context precision).",ctx:"Mention RAGAS framework and the distinction between retrieval and generation errors."},
+    {q:"What is constitutional AI, and how does it improve alignment at scale?",hint:"Model critiques and revises own outputs against a set of principles — reduces RLHF annotation needs.",ctx:"CAI scales oversight more efficiently — discuss its role in Claude's training."},
+    {q:"Explain the concept of context window and how modern LLMs extend it (RoPE, ALiBi, etc.).",hint:"Fixed vs dynamic position encoding — RoPE enables length extrapolation via rotation in complex space.",ctx:"Context length affects RAG design, document processing, and agent memory systems."},
+  ],
+  computer_vision: [
+    {q:"Explain the ResNet architecture. Why do residual connections solve the degradation problem?",hint:"Skip connections allow gradients to bypass layers, preventing hard-to-learn identity mappings.",ctx:"Discuss how adding layers without skip connections can hurt performance."},
+    {q:"How does YOLO achieve real-time object detection? What are its architectural innovations?",hint:"Single-pass detection grid predicts boxes and class probabilities simultaneously — no region proposal.",ctx:"Compare with two-stage detectors (Faster R-CNN) — discuss speed vs accuracy trade-off."},
+    {q:"Explain the differences: semantic segmentation, instance segmentation, and panoptic segmentation.",hint:"Semantic labels each pixel by class; instance distinguishes individual objects; panoptic combines both.",ctx:"Mask R-CNN and Segment Anything Model (SAM) are key reference models."},
+    {q:"How do diffusion models work, and why have they surpassed GANs for image generation quality?",hint:"Diffusion adds noise progressively, then trains a model to reverse the process step by step.",ctx:"Discuss DDPM, classifier-free guidance, and latent diffusion (Stable Diffusion)."},
+    {q:"What is a Vision Transformer (ViT) and how does it process images differently from CNNs?",hint:"ViT patches images into tokens and applies standard transformer attention — no spatial inductive bias.",ctx:"Discuss data efficiency, Swin Transformer, and hybrid approaches."},
+    {q:"Explain image augmentation strategies and why they are crucial for training CV models.",hint:"Random crops, flips, color jitter, cutmix, mixup — address overfitting and distribution shift.",ctx:"Augmentation is often the difference between good and great CV performance."},
+    {q:"How would you design a production image classification pipeline for 10M images per day?",hint:"Consider preprocessing, batching, GPU parallelism, model serving, monitoring, and feedback loops.",ctx:"System design for CV — address throughput, latency, cost, and accuracy trade-offs."},
+    {q:"What is optical flow and how is it used in video understanding?",hint:"Optical flow estimates per-pixel motion between frames — used in action recognition and tracking.",ctx:"Discuss FlowNet, PWC-Net, and how transformers handle temporal video understanding."},
+  ],
+  mlops: [
+    {q:"What is data drift, and how do you detect and handle it in production ML systems?",hint:"Covariate shift vs concept drift — monitor input distributions and model performance separately.",ctx:"Mention Kolmogorov-Smirnov tests, PSI, and automated retraining pipelines."},
+    {q:"Describe a CI/CD pipeline for machine learning. How does it differ from software CI/CD?",hint:"ML adds data validation, model training, evaluation gates, and model registry steps.",ctx:"Discuss MLflow, DVC, and Kubeflow — tools tested at mature ML companies."},
+    {q:"How would you design model serving infrastructure for 100K requests per second?",hint:"Consider model batching, GPU utilization, caching predictions, and horizontal scaling.",ctx:"Discuss Triton Inference Server, TorchServe, load balancing, and latency SLAs."},
+    {q:"What is a feature store, and why is it critical for ML consistency?",hint:"A feature store ensures the same feature computation in training is used in inference — eliminating skew.",ctx:"Training-serving skew is a major source of production failures."},
+    {q:"Explain shadow deployment and canary releases for ML models.",hint:"Shadow runs new model in parallel without affecting users; canary gradually shifts traffic percentage.",ctx:"Discuss rollback triggers, A/B testing frameworks, and multi-armed bandits."},
+    {q:"How do you monitor an ML model in production? What signals indicate degradation?",hint:"Input distribution shifts, prediction distribution shifts, downstream metric drops, latency spikes.",ctx:"Discuss alerting strategies, retraining triggers, and human-in-the-loop processes."},
+    {q:"What is model versioning and why is experiment tracking critical in ML workflows?",hint:"Reproducibility requires tracking code, data version, hyperparameters, and environment — not just weights.",ctx:"MLflow, Weights & Biases, and DVC are standard tools — discuss trade-offs."},
+    {q:"Explain the concept of model cards and datasheets. Why are they important?",hint:"Documentation artifacts describing model purpose, performance across groups, limitations, and intended use.",ctx:"Model cards promote transparency — increasingly required for enterprise and regulated AI deployments."},
+  ],
+  reinforcement: [
+    {q:"Explain the Markov Decision Process framework. What are the key components?",hint:"State space, action space, transition function, reward function, and discount factor.",ctx:"Discuss the Markov property and why it is a useful approximation in practice."},
+    {q:"What is the difference between on-policy and off-policy learning? Give examples.",hint:"On-policy (SARSA) evaluates the policy being followed; off-policy (Q-learning) learns from any experience.",ctx:"Policy distinction matters for sample efficiency — discuss experience replay."},
+    {q:"Explain the Policy Gradient Theorem and why REINFORCE has high variance.",hint:"Policy gradient uses log-probability gradient weighted by returns — returns are noisy advantage estimates.",ctx:"Discuss baselines, advantage functions, and why actor-critic methods reduce variance."},
+    {q:"How does PPO prevent destructive policy updates?",hint:"PPO clips the probability ratio between new and old policy, preventing large harmful updates.",ctx:"Compare with TRPO — explain why the clipped objective is simpler and more stable."},
+    {q:"What is the exploration-exploitation dilemma and how do different RL algorithms address it?",hint:"Epsilon-greedy, UCB, Thompson sampling, curiosity-driven exploration — each makes different trade-offs.",ctx:"Exploration is critical in sparse-reward environments — discuss count-based methods."},
+    {q:"Explain model-based vs model-free RL. When would you use each?",hint:"Model-based plans using a learned environment model; model-free learns directly from experience.",ctx:"Model-based is more sample efficient but introduces model bias — discuss Dyna-Q and AlphaZero."},
+  ],
+  data_science: [
+    {q:"Explain the difference between p-value and statistical significance. What are common misconceptions?",hint:"P-value is not the probability the null is true — it is P(data|null). Significance does not equal practical importance.",ctx:"Address effect size, multiple testing, and confidence intervals."},
+    {q:"How would you design an A/B test for a product change? Walk through the full process.",hint:"Define metric, calculate sample size, run for full experiment period, analyze — discuss pitfalls at each step.",ctx:"Address novelty effects, peeking problems, and network effects."},
+    {q:"What is selection bias and how can it invalidate your analysis?",hint:"Selection bias occurs when the sample is not representative — you answer a different question than intended.",ctx:"Discuss Simpson's paradox, survivorship bias, and confounders."},
+    {q:"Explain the difference between correlation and causation. How do you establish causality from observational data?",hint:"Correlation can arise from confounders. Causal methods: RCTs, instrumental variables, difference-in-differences.",ctx:"Discuss Pearl's do-calculus, propensity score matching, and natural experiments."},
+    {q:"What is the difference between MCAR, MAR, and MNAR missing data? How do you handle each?",hint:"Missing Completely At Random, At Random (depends on observed), Not At Random (depends on missing value itself).",ctx:"Imputation strategies differ — discuss mean, MICE, and when to delete vs impute."},
+    {q:"Explain Bayesian vs frequentist approaches to statistics. When would you use each?",hint:"Bayesian incorporates prior knowledge and gives posterior distributions; frequentist uses only observed data.",ctx:"Bayesian is preferred when prior knowledge is informative or sample sizes are small."},
+  ],
+  generative_ai: [
+    {q:"Compare VAEs and GANs as generative models. When would you choose each?",hint:"VAEs have explicit density estimation and stable training; GANs produce sharper samples but are harder to train.",ctx:"Discuss latent space interpolation, mode coverage, and how diffusion compares to both."},
+    {q:"How does classifier-free guidance work in diffusion models?",hint:"Train a single model both conditioned and unconditionally; at inference, extrapolate beyond the conditional prediction.",ctx:"CFG is key to high-quality conditional generation — discuss the quality-diversity trade-off."},
+    {q:"What is the CLIP model and how is it used in generative AI systems?",hint:"CLIP aligns image and text embeddings — enables text-guided generation and zero-shot classification.",ctx:"CLIP powers DALL-E and Stable Diffusion text conditioning."},
+    {q:"Explain the challenges of evaluating generative AI outputs. What metrics are commonly used?",hint:"FID measures image quality/diversity; CLIP score measures text-image alignment; human evaluation for nuanced quality.",ctx:"Discuss Inception Score, FID limitations, and the need for human preference evaluation."},
+    {q:"What are multimodal foundation models? How do they combine vision and language?",hint:"Joint training on image-text pairs — contrastive learning (CLIP), generative (Flamingo, GPT-4V).",ctx:"Multimodal models unlock image captioning, visual QA, and document understanding."},
+    {q:"Explain score-based generative models and their connection to diffusion models.",hint:"Score matching trains a model to predict the gradient of the log data density at different noise levels.",ctx:"Score-based and DDPM are mathematically equivalent — discuss Song et al. unification."},
+  ],
+  ai_ethics: [
+    {q:"What is algorithmic fairness? Describe three different fairness definitions and tensions between them.",hint:"Demographic parity, equal opportunity, individual fairness — these can be mathematically incompatible.",ctx:"Fairness impossibility results are important — reference Chouldechova and Kleinberg proofs."},
+    {q:"How do you detect and mitigate bias in training data for a classification model?",hint:"Audit by subgroup, measure representation, use debiasing techniques — but define bias carefully.",ctx:"Discuss labeling bias, historical bias, and how mitigation can introduce new issues."},
+    {q:"What is model explainability (XAI) and why does it matter for responsible AI?",hint:"SHAP, LIME, attention visualization — when are post-hoc explanations sufficient vs inherently interpretable models needed?",ctx:"XAI is critical for regulated industries — discuss GDPR right to explanation."},
+    {q:"How would you approach AI governance for a high-stakes decision-making system?",hint:"Risk assessment, human oversight, audit trails, documentation, and regular review cycles.",ctx:"Discuss EU AI Act, NIST AI RMF, and accountability mechanisms."},
+    {q:"What are deepfakes and what technical and policy measures can mitigate their harms?",hint:"Detection methods (forensics, watermarking), platform policies, and provenance standards like C2PA.",ctx:"Deepfakes test understanding of generative AI risks and societal impact."},
+    {q:"Explain differential privacy. How is it applied to machine learning?",hint:"Add calibrated noise to queries or gradients — epsilon controls the privacy-utility trade-off.",ctx:"Differentially private SGD is used by Apple, Google — discuss federated learning connection."},
+  ],
+  graph_ml: [
+    {q:"Explain message passing in Graph Neural Networks. What are the limitations of deep GNNs?",hint:"Nodes aggregate neighbor information iteratively. Over-smoothing makes representations converge as layers increase.",ctx:"Discuss GCN, GraphSAGE, and PairNorm for over-smoothing mitigation."},
+    {q:"How does Graph Attention Network (GAT) differ from standard GCN?",hint:"GAT learns attention coefficients for neighbor aggregation instead of using normalized adjacency.",ctx:"Attention in graphs improves expressiveness — discuss multi-head attention for heterogeneous neighborhoods."},
+    {q:"What is the Weisfeiler-Lehman test and why is it relevant to GNN expressiveness?",hint:"WL test iteratively hashes node neighborhoods — standard GNNs are at most as powerful as 1-WL.",ctx:"GNN theory is tested in research roles — discuss higher-order GNNs and practical implications."},
+    {q:"How would you apply GNNs to a fraud detection problem in a financial network?",hint:"Node features, edge types, temporal evolution, and class imbalance — discuss link prediction and node classification.",ctx:"Fraud detection is a canonical graph ML use case — address cold-start and adversarial robustness."},
+    {q:"Explain knowledge graphs. How are they used in AI applications?",hint:"Entities and relationships as structured triples — used in search, recommendation, and question answering.",ctx:"Discuss KG embedding methods (TransE, ComplEx) and integration with LLMs."},
+  ],
+  time_series: [
+    {q:"Explain ARIMA models. What are the p, d, q parameters and how do you select them?",hint:"p=AR order, d=differencing, q=MA order. ACF/PACF plots and information criteria guide selection.",ctx:"Discuss stationarity testing (ADF test) and seasonal ARIMA (SARIMA)."},
+    {q:"How do LSTMs address the limitations of vanilla RNNs for time series forecasting?",hint:"LSTM gates (input, forget, output) control information flow, enabling long-range dependency learning.",ctx:"Compare with GRUs, TCNs, and transformer-based approaches like Temporal Fusion Transformer."},
+    {q:"What is temporal data leakage and how does it differ from standard data leakage?",hint:"Using future information when predicting the past — e.g., normalizing with the full time series.",ctx:"Discuss walk-forward validation and why standard k-fold is inappropriate for time series."},
+    {q:"Explain anomaly detection approaches for time series data.",hint:"Statistical (STL decomposition, isolation forest), ML (autoencoders, LSTMs), and forecasting-based methods.",ctx:"Anomaly detection is applied in monitoring, security, and operations."},
+    {q:"How would you handle seasonality and trend in a time series forecasting problem?",hint:"Decompose with STL, use seasonal differencing, or model explicitly with Fourier features or seasonal parameters.",ctx:"Discuss Prophet's approach and when neural models outperform classical decomposition."},
+  ],
+  prompt_engineering: [
+    {q:"Explain zero-shot, one-shot, and few-shot prompting. When does each approach work best?",hint:"Zero-shot relies on pre-training; few-shot provides examples in context — more examples help with novel formats.",ctx:"Few-shot is powerful but uses context window — discuss prompt efficiency."},
+    {q:"What is chain-of-thought (CoT) prompting and why does it improve reasoning?",hint:"Asking the model to reason step-by-step before answering encourages intermediate computation.",ctx:"Discuss zero-shot CoT ('think step by step') and self-consistency sampling."},
+    {q:"How does prompt injection work and how do you defend against it in LLM applications?",hint:"Malicious input overrides system instructions — defenses include input sanitization, separate instruction channels.",ctx:"Security is critical in production LLM systems — discuss indirect prompt injection too."},
+    {q:"What is the ReAct prompting pattern and how does it enable LLM tool use?",hint:"Reason + Act interleaved: the model reasons, takes an action (tool call), observes result, reasons again.",ctx:"ReAct is the foundation of many AI agent frameworks — discuss Thought/Action/Observation structure."},
+    {q:"How do you structure system prompts for production LLM applications?",hint:"Clear role, task description, constraints, output format, examples, and persona — layered hierarchy.",ctx:"System prompt design determines reliability and safety of LLM-powered applications."},
+    {q:"What is structured output prompting and why is it important for production applications?",hint:"Instruct the model to respond in JSON/XML with a defined schema — enables downstream parsing.",ctx:"Discuss function calling, Pydantic schemas, and validation strategies."},
+  ],
+  rag_systems: [
+    {q:"Explain the architecture of a RAG system. What are the key components?",hint:"Document ingestion, chunking, embedding, vector store, retrieval, re-ranking, and generation.",ctx:"Each component introduces failure modes — discuss how to debug RAG pipelines."},
+    {q:"What chunking strategies exist for RAG systems? How do you choose the right one?",hint:"Fixed-size, sentence-based, semantic, hierarchical — chunk size affects retrieval precision vs recall.",ctx:"Chunk size is one of the most impactful RAG hyperparameters — discuss overlap."},
+    {q:"How do you evaluate a RAG system? What metrics measure retrieval vs generation quality?",hint:"Recall@k, MRR for retrieval; faithfulness, answer relevance, context precision for generation.",ctx:"RAGAS framework provides automated RAG evaluation — discuss human evaluation too."},
+    {q:"What is hybrid search in RAG and why is it often better than pure vector search?",hint:"Combine dense (semantic) and sparse (BM25 keyword) retrieval — each captures different relevance signals.",ctx:"Reciprocal rank fusion (RRF) is the standard way to combine dense and sparse scores."},
+    {q:"How do you handle knowledge base updates in a production RAG system?",hint:"Incremental indexing, deletion strategies, cache invalidation, and version-aware retrieval.",ctx:"Stale knowledge is a major RAG failure mode — discuss update frequency vs cost trade-offs."},
+    {q:"What are the limitations of RAG and when would you fine-tune instead?",hint:"RAG struggles with implicit knowledge, reasoning chains, and when latency matters — fine-tuning internalises knowledge.",ctx:"Fine-tuning vs RAG is a common design decision — most production systems combine both."},
+  ],
+  ai_system_design: [
+    {q:"How would you design a real-time recommendation system for 100M users?",hint:"Two-tower retrieval, re-ranking, feature freshness, serving latency, and feedback loops.",ctx:"Recommendation system design is one of the most common ML system design interview questions."},
+    {q:"Design a semantic search system for a large document corpus. Walk through the architecture.",hint:"Offline: chunk, embed, index. Online: embed query, retrieve, re-rank, generate answer.",ctx:"Discuss embedding model choice, vector DB selection, and evaluation strategy."},
+    {q:"How would you architect a real-time fraud detection ML system?",hint:"Feature engineering from transaction streams, low-latency inference, threshold calibration, human review queue.",ctx:"Latency constraints make this challenging — discuss online learning and concept drift."},
+    {q:"Design a system to detect hate speech at scale on a social platform.",hint:"Multi-stage: fast keyword filter, ML classifier, human review for edge cases — discuss false positive cost.",ctx:"Content moderation tests understanding of production ML trade-offs and ethics."},
+    {q:"How do you handle model versioning and rollbacks in a production ML system?",hint:"Model registry, shadow mode testing, canary deployment, automated rollback triggers on metric degradation.",ctx:"Deployment safety is critical — discuss blue-green deployment and feature flags for ML."},
+  ],
+  statistics_prob: [
+    {q:"Explain the Central Limit Theorem and why it is fundamental to statistical inference.",hint:"Sample means of any distribution converge to normal as n increases — enables parametric tests.",ctx:"CLT underpins hypothesis testing, confidence intervals, and much of classical statistics."},
+    {q:"What is maximum likelihood estimation (MLE)? How does it relate to cross-entropy loss?",hint:"MLE finds parameters maximizing probability of observed data — minimizing cross-entropy is equivalent for classification.",ctx:"The MLE-cross-entropy connection is fundamental — extends to MAP estimation with regularization."},
+    {q:"Explain Bayes' theorem and give an ML application where Bayesian reasoning is critical.",hint:"P(H|E) = P(E|H)P(H)/P(E) — posterior is proportional to likelihood times prior.",ctx:"Naive Bayes, Bayesian hyperparameter optimization, and uncertainty estimation are key applications."},
+    {q:"What is the difference between Type I and Type II errors? How do you manage the trade-off?",hint:"Type I = false positive (reject true null); Type II = false negative (fail to reject false null). Precision-recall reflects this.",ctx:"Significance level controls Type I; power controls Type II — discuss sample size planning."},
+    {q:"Explain information entropy and KL divergence. How are they used in ML?",hint:"Entropy measures uncertainty; KL divergence measures how one distribution differs from another.",ctx:"KL divergence appears in VAEs (ELBO), knowledge distillation, and information-theoretic regularization."},
+    {q:"What is bootstrapping and when is it preferable to parametric statistical tests?",hint:"Resampling with replacement to estimate sampling distribution — no distributional assumptions needed.",ctx:"Bootstrapping is powerful for small samples and non-standard statistics like medians."},
+  ],
+  feature_engineering: [
+    {q:"What techniques do you use to handle categorical variables with high cardinality?",hint:"Target encoding, embedding layers, frequency encoding, hashing trick — each has different leakage risks.",ctx:"High-cardinality categoricals appear in user IDs, ZIP codes, product categories — a practical challenge."},
+    {q:"How do you handle missing data? When is imputation vs deletion appropriate?",hint:"MCAR → deletion OK; MAR → MICE or model-based; MNAR → requires domain knowledge or sensitivity analysis.",ctx:"Missing data strategy significantly impacts model quality — discuss leakage risks in imputation."},
+    {q:"Explain PCA. When would you use it and what are its limitations?",hint:"Projects data onto directions of maximum variance — linear, unsupervised, loses interpretability.",ctx:"PCA assumes linear relationships — discuss t-SNE, UMAP for nonlinear dimensionality reduction."},
+    {q:"What is target encoding and what are the risks of using it?",hint:"Replace category with mean target value — powerful but causes data leakage if done on full training set.",ctx:"Use cross-validation or add-smoothing to prevent leakage — discuss leave-one-out encoding."},
+    {q:"How do you engineer features for a time-series-based ML problem?",hint:"Lag features, rolling statistics, calendar features, Fourier transforms for seasonality, and trend indicators.",ctx:"Time-series feature engineering requires careful handling of temporal ordering to avoid leakage."},
+    {q:"Explain the concept of feature interactions and how you automatically discover them.",hint:"Polynomial features, tree-based feature importance, SHAP interaction values, and learned embeddings.",ctx:"Automatic feature interaction discovery is critical at scale — discuss neural feature crossing."},
+  ],
+  transformer_arch: [
+    {q:"Explain scaled dot-product attention. Why is scaling by sqrt(d_k) important?",hint:"Without scaling, large d_k pushes dot products into saturation regions of softmax where gradients vanish.",ctx:"This is a frequently tested detail — connect to numerical stability and training dynamics."},
+    {q:"What is multi-head attention and what does each head learn?",hint:"Multiple attention heads attend to different positions/representation subspaces simultaneously.",ctx:"Different heads specialize — syntactic, semantic, co-reference — discuss interpretability."},
+    {q:"Explain positional encoding. Why is RoPE preferred in modern LLMs?",hint:"RoPE encodes relative position via rotation in complex space, enabling length extrapolation.",ctx:"Compare sinusoidal, learned, ALiBi, and RoPE — discuss how they affect context length."},
+    {q:"What are the computational and memory bottlenecks in transformer attention? How are they addressed?",hint:"Quadratic complexity in sequence length — Flash Attention, sparse attention, linear attention approximate.",ctx:"Efficient attention is critical for long-context models — discuss Flash Attention 2 and ring attention."},
+    {q:"Explain layer normalization vs batch normalization. Why is LayerNorm preferred in transformers?",hint:"LayerNorm operates per-sample across features — stable for variable-length sequences, no batch dependency.",ctx:"Discuss Pre-LN vs Post-LN and their effect on training stability and learning rate sensitivity."},
+    {q:"What are scaling laws for language models? What do they predict?",hint:"Loss scales as a power law with compute, data, and model size — Chinchilla showed data is often undertrained.",ctx:"Scaling laws guide training budget allocation — discuss compute-optimal training."},
+  ],
+  ai_agents: [
+    {q:"What is an AI agent? How does it differ from a standard LLM application?",hint:"Agents take multi-step actions, use tools, maintain state, and pursue goals autonomously across turns.",ctx:"Agents add planning and tool use on top of LLMs — discuss reliability challenges."},
+    {q:"Explain the ReAct pattern. How does interleaving reasoning and action improve agent performance?",hint:"Thought-Action-Observation loop — reasoning before acting reduces hallucinated tool calls.",ctx:"ReAct is foundational to most production agents — discuss failure modes and error recovery."},
+    {q:"What are the key challenges in building reliable AI agents?",hint:"Hallucination, error propagation, infinite loops, tool failures, and loss of goal over long horizons.",ctx:"Reliability is the core challenge — discuss human-in-the-loop, sandboxing, and step verification."},
+    {q:"How do multi-agent systems work and when are they preferable to single agents?",hint:"Specialized agents collaborate — one agent cannot hold all context and tools needed for complex workflows.",ctx:"Discuss orchestrator-worker patterns, inter-agent communication, and consensus mechanisms."},
+    {q:"What is memory in AI agents? Describe different types and how they are implemented.",hint:"In-context (window), external (vector store), episodic (conversation history), semantic (knowledge base).",ctx:"Memory determines what the agent knows and can reason about — discuss compression strategies."},
+    {q:"How would you evaluate an AI agent system? What metrics matter most?",hint:"Task success rate, efficiency (steps taken), tool accuracy, error recovery rate, and human satisfaction.",ctx:"Agent evaluation requires end-to-end benchmarks — discuss AgentBench and human evaluation."},
+  ],
+  model_evaluation: [
+    {q:"What is the difference between offline and online evaluation for ML models?",hint:"Offline uses held-out data (precision, recall, AUC); online uses live user interactions (CTR, conversion).",ctx:"Offline metrics often don't translate to online metrics — discuss the evaluation gap."},
+    {q:"Explain calibration in ML models. Why is it important and how do you measure it?",hint:"A calibrated model's predicted probabilities match empirical frequencies — measured with reliability diagrams and ECE.",ctx:"Calibration matters for risk-sensitive applications — Platt scaling and temperature scaling are common fixes."},
+    {q:"What is model red-teaming and how is it used in AI safety?",hint:"Adversarially probing a model to find failure modes, biases, and safety violations before deployment.",ctx:"Red-teaming is now standard practice — discuss automated red-teaming with LLMs."},
+    {q:"How do you evaluate an LLM? What benchmarks exist and what are their limitations?",hint:"MMLU, HumanEval, HellaSwag — but benchmarks saturate and may not reflect real-world performance.",ctx:"Discuss contamination, Goodhart's law, and why human preference evaluation (Chatbot Arena) is valuable."},
+    {q:"What is the difference between accuracy, macro-averaged F1, and weighted F1? When does each matter?",hint:"Macro treats all classes equally; weighted accounts for class frequency — use macro for imbalanced classes.",ctx:"Metric selection should reflect the business problem — discuss cost-sensitive evaluation."},
+    {q:"Explain cross-validation strategies for imbalanced datasets.",hint:"Stratified k-fold preserves class proportions — combine with oversampling (SMOTE) or class weights.",ctx:"Discuss when to use leave-one-out, group k-fold, and nested cross-validation."},
+  ],
+};
+
+// Fallback questions for courses with fewer entries
+function getQuestions(courseId, count=5){
+  const bank = QUESTION_BANK[courseId] || QUESTION_BANK.ml_fundamentals;
+  const shuffled = [...bank].sort(()=>Math.random()-0.5);
+  return shuffled.slice(0, Math.min(count, shuffled.length));
+}
+
+// ══════════════════════════════════════════
+//  ANTHROPIC API — LLM EVALUATOR
+// ══════════════════════════════════════════
+async function evaluateAnswer(question, answer, courseContext){
+  if(!answer || answer.trim().length < 10){
+    return {
+      score:10,
+      strengths:"No substantive answer was provided.",
+      improvements:"Provide a detailed answer covering key concepts.",
+      accuracy:10, depth:10, examples:10, concepts:10
+    };
+  }
+
+  const prompt = `You are an expert AI interviewer evaluating a candidate's answer to a technical interview question.
+
+Course Context: ${courseContext}
+
+Question: "${question}"
+
+Candidate's Answer: "${answer}"
+
+Evaluate this answer on a scale of 0-100. Respond ONLY with valid JSON (no markdown, no extra text):
+{
+  "score": <number 0-100>,
+  "concepts": <number 0-100 — conceptual accuracy>,
+  "depth": <number 0-100 — technical depth>,
+  "accuracy": <number 0-100 — factual correctness>,
+  "examples": <number 0-100 — use of examples/specifics>,
+  "strengths": "<1-2 sentences on what was done well>",
+  "improvements": "<1-2 sentences on specific gaps or improvements>"
+}`;
+
+  try{
+    const resp = await fetch("https://api.anthropic.com/v1/messages",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({
+        model:"claude-sonnet-4-20250514",
+        max_tokens:1000,
+        messages:[{role:"user",content:prompt}]
+      })
+    });
+    const data = await resp.json();
+    const text = data.content?.map(b=>b.text||"").join("") || "{}";
+    const clean = text.replace(/```json|```/g,"").trim();
+    const parsed = JSON.parse(clean);
+    return parsed;
+  }catch(e){
+    // Fallback scoring based on answer length and keywords
+    const len = answer.trim().split(/\s+/).length;
+    const base = Math.min(70, 30 + len * 0.8);
+    return{
+      score:Math.round(base),
+      concepts:Math.round(base),
+      depth:Math.round(base*0.9),
+      accuracy:Math.round(base),
+      examples:answer.includes("for example")||answer.includes("such as") ? Math.round(base) : Math.round(base*0.6),
+      strengths:"The answer addressed the question with some relevant points.",
+      improvements:"Consider adding more specific technical details, examples, or formal definitions."
+    };
+  }
+}
+
+// ══════════════════════════════════════════
+//  AUTH HELPERS
+// ══════════════════════════════════════════
+function checkPasswordStrength(val){
+  const bars = ['pw-b1','pw-b2','pw-b3','pw-b4'];
+  const label = document.getElementById('pw-label');
+  if(!label) return;
+  // reset
+  bars.forEach(id=>{ const el=document.getElementById(id); if(el){el.style.background='var(--surface3)';} });
+  if(!val){ label.textContent='Enter a password'; label.style.color='var(--ink3)'; return; }
+  let score=0;
+  if(val.length>=8) score++;
+  if(val.length>=12) score++;
+  if(/[A-Z]/.test(val)&&/[0-9]/.test(val)) score++;
+  if(/[^A-Za-z0-9]/.test(val)) score++;
+  const colors=['#A32D2D','#BA7517','#1D9E75','#0F6E56'];
+  const labels=['Too short','Fair','Good','Strong'];
+  for(let i=0;i<score;i++){
+    const el=document.getElementById(bars[i]);
+    if(el) el.style.background=colors[Math.min(score-1,3)];
+  }
+  label.textContent=labels[Math.min(score-1,3)]||'Too short';
+  label.style.color=colors[Math.min(score-1,3)];
+}
+
+function togglePassVisibility(inputId, btn){
+  const inp = document.getElementById(inputId);
+  if(!inp) return;
+  if(inp.type==='password'){
+    inp.type='text';
+    btn.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>';
+  } else {
+    inp.type='password';
+    btn.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
+  }
+}
+
+function showForgotToast(){
+  showToast('Password reset coming soon — use demo@intellihire.ai / demo1234','');
+}
+
+// ══════════════════════════════════════════
+//  AUTH
+// ══════════════════════════════════════════
+function handleSignup(){
+  const fname = (document.getElementById('signup-fname')?.value||'').trim();
+  const lname = (document.getElementById('signup-lname')?.value||'').trim();
+  const name  = (fname+' '+lname).trim();
+  const email = (document.getElementById('signup-email')?.value||'').trim();
+  const pass  = document.getElementById('signup-pass')?.value||'';
+  const role  = document.getElementById('signup-role')?.value||'';
+  const terms = document.getElementById('signup-terms')?.checked;
+  const err   = document.getElementById('signup-error');
+
+  if(!fname){ err.textContent='Please enter your first name.'; err.style.display='block'; return; }
+  if(!email||!email.includes('@')){ err.textContent='Please enter a valid email address.'; err.style.display='block'; return; }
+  if(pass.length<8){ err.textContent='Password must be at least 8 characters.'; err.style.display='block'; return; }
+  if(!role){ err.textContent='Please select your target role.'; err.style.display='block'; return; }
+  if(!terms){ err.textContent='Please accept the Terms of Service to continue.'; err.style.display='block'; return; }
+  if(users.find(u=>u.email===email)){
+    err.textContent='An account with this email already exists. Please log in.'; err.style.display='block'; return;
+  }
+
+  err.style.display='none';
+  const btn = document.getElementById('signup-btn');
+  const btnText = document.getElementById('signup-btn-text');
+  if(btn){ btn.disabled=true; }
+  if(btnText){ btnText.textContent='Creating account...'; }
+
+  setTimeout(()=>{
+    const user = {id:Date.now(), name, email, pass, role};
+    users.push(user);
+    localStorage.setItem('ih_users', JSON.stringify(users));
+    if(btn){ btn.disabled=false; }
+    if(btnText){ btnText.textContent='Create Free Account →'; }
+    loginUser(user);
+    showToast('Account created! Welcome to Intellihire 🎉','success');
+  }, 600);
+}
+
+function handleLogin(){
+  const email = (document.getElementById('login-email')?.value||'').trim();
+  const pass  = document.getElementById('login-pass')?.value||'';
+  const err   = document.getElementById('login-error');
+
+  if(!email||!pass){ err.style.display='block'; return; }
+
+  // Demo account
+  if(email==='demo@intellihire.ai' && pass==='demo1234'){
+    err.style.display='none';
+    setLoginLoading(true);
+    setTimeout(()=>{
+      setLoginLoading(false);
+      loginUser({id:'demo', name:'Demo User', email:'demo@intellihire.ai', role:'Machine Learning Engineer'});
+    }, 500);
+    return;
+  }
+
+  const user = users.find(u=>u.email===email && u.pass===pass);
+  if(!user){ err.style.display='block'; return; }
+
+  err.style.display='none';
+  setLoginLoading(true);
+  setTimeout(()=>{ setLoginLoading(false); loginUser(user); }, 500);
+}
+
+function setLoginLoading(on){
+  const btn = document.getElementById('login-btn');
+  const txt = document.getElementById('login-btn-text');
+  if(btn) btn.disabled = on;
+  if(txt) txt.textContent = on ? 'Signing in...' : 'Sign In →';
+}
+
+function loginUser(user){
+  currentUser = user;
+  localStorage.setItem('ih_current', JSON.stringify(user));
+  // Populate app UI
+  const initials = user.name ? user.name[0].toUpperCase() : 'U';
+  document.getElementById('sidebar-avatar').textContent = initials;
+  document.getElementById('sidebar-name').textContent = user.name;
+  document.getElementById('sidebar-email').textContent = user.email;
+  document.getElementById('welcome-name').textContent = `Welcome back, ${user.name.split(' ')[0]}! 👋`;
+  document.getElementById('profile-avatar').textContent = initials;
+  document.getElementById('profile-name').textContent = user.name;
+  document.getElementById('profile-email').textContent = user.email;
+  document.getElementById('profile-role').textContent = user.role || '—';
+  document.getElementById('profile-name-input').value = user.name;
+  const roleSelect = document.getElementById('profile-role-select');
+  if(roleSelect) roleSelect.value = user.role || '';
+  showPage('app');
+  showSection('dashboard');
+  refreshDashboard();
+}
+
+function logout(){
+  currentUser = null;
+  localStorage.removeItem('ih_current');
+  showPage('landing');
+}
+
+// ══════════════════════════════════════════
+//  NAVIGATION — auth-gated
+// ══════════════════════════════════════════
+function showPage(name){
+  // Hard gate: only 'signup', 'login', 'landing' are allowed without a user
+  if(name==='app' && !currentUser){ showPage('signup'); return; }
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const target = document.getElementById('page-'+name);
+  if(target) target.classList.add('active');
+  const se = document.getElementById('signup-error');
+  const le = document.getElementById('login-error');
+  if(se) se.style.display='none';
+  if(le) le.style.display='none';
+}
+
+function showSection(name){
+  document.querySelectorAll('.content-section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('section-'+name).classList.add('active');
+  // Highlight nav
+  document.querySelectorAll('.nav-item').forEach(n=>{
+    if(n.getAttribute('onclick')===`showSection('${name}')`) n.classList.add('active');
+  });
+}
+
+// ══════════════════════════════════════════
+//  COURSES
+// ══════════════════════════════════════════
+let _activeFilter = 'All';
+
+function renderCourses(){
+  renderCourseGrid(COURSES);
+  renderRecommended();
+}
+
+function renderCourseGrid(list){
+  const grid = document.getElementById('courses-grid');
+  const msg  = document.getElementById('no-courses-msg');
+  const lbl  = document.getElementById('courses-count-label');
+
+  if(!grid) return;
+
+  if(list.length === 0){
+    grid.innerHTML = '';
+    if(msg) msg.style.display = 'block';
+    return;
+  }
+  if(msg) msg.style.display = 'none';
+  if(lbl) lbl.textContent = list.length + ' AI course' + (list.length===1?'':'s') + ' — click any card to start your interview';
+
+  grid.innerHTML = list.map(c=>`
+    <div class="course-card" onclick="startInterview('${c.id}')" title="Start ${c.name} interview">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:0.75rem">
+        <div class="course-icon" style="background:${c.color};color:${c.iconColor};margin:0">${c.icon}</div>
+        <span class="difficulty-badge diff-${c.difficulty.toLowerCase()}">${c.difficulty}</span>
+      </div>
+      <div class="course-name">${c.name}</div>
+      <div class="course-desc">${c.desc}</div>
+      <div class="course-meta">
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          ${c.tags.slice(0,3).map(t=>`<span class="course-tag">${t}</span>`).join('')}
+        </div>
+        <span style="font-size:12px;color:var(--ink3);white-space:nowrap">${c.questions} Qs</span>
+      </div>
+      <div style="margin-top:1rem;padding-top:0.75rem;border-top:1px solid var(--border2)">
+        <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--accent);font-weight:500">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Start Interview
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderRecommended(){
+  const rec = document.getElementById('recommended-courses');
+  if(!rec) return;
+  const picks = COURSES.slice(0,6);
+  rec.innerHTML = picks.map(c=>`
+    <div class="course-card" style="padding:1rem" onclick="startInterview('${c.id}')">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+        <div class="course-icon" style="background:${c.color};color:${c.iconColor};width:36px;height:36px;border-radius:8px;font-size:16px;margin:0">${c.icon}</div>
+        <div class="course-name" style="font-size:13px">${c.name}</div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span class="difficulty-badge diff-${c.difficulty.toLowerCase()}">${c.difficulty}</span>
+        <span style="font-size:12px;color:var(--ink3)">${c.questions} Qs</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterCourses(){
+  const q = (document.getElementById('course-search')?.value||'').toLowerCase().trim();
+  let list = COURSES;
+  if(_activeFilter !== 'All') list = list.filter(c=>c.difficulty===_activeFilter);
+  if(q) list = list.filter(c=>
+    c.name.toLowerCase().includes(q)||
+    c.desc.toLowerCase().includes(q)||
+    c.tags.some(t=>t.toLowerCase().includes(q))
+  );
+  renderCourseGrid(list);
+}
+
+function setFilter(level, btn){
+  _activeFilter = level;
+  document.querySelectorAll('.filter-pill').forEach(p=>p.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  filterCourses();
+}
+
+function clearCourseFilter(){
+  _activeFilter = 'All';
+  const search = document.getElementById('course-search');
+  if(search) search.value = '';
+  document.querySelectorAll('.filter-pill').forEach((p,i)=>{
+    p.classList.toggle('active', i===0);
+  });
+  renderCourseGrid(COURSES);
+  const msg = document.getElementById('no-courses-msg');
+  if(msg) msg.style.display='none';
+}
+
+// ══════════════════════════════════════════
+//  INTERVIEW SESSION
+// ══════════════════════════════════════════
+let timer, timerSecs=120;
+
+function startInterview(courseId){
+  const course = COURSES.find(c=>c.id===courseId);
+  if(!course) return;
+  const questions = getQuestions(courseId, 5);
+  currentSession = {
+    courseId, course, questions,
+    currentIndex:0, answers:[], startTime:Date.now()
+  };
+  document.getElementById('interview-course-name').textContent = course.name;
+  document.getElementById('interview-track').textContent = course.difficulty + ' — AI Interview';
+  document.getElementById('q-total').textContent = questions.length;
+  showSection('interview');
+  renderQuestion();
+  startTimer();
+}
+
+function renderQuestion(){
+  const s = currentSession;
+  const q = s.questions[s.currentIndex];
+  const num = s.currentIndex + 1;
+  const total = s.questions.length;
+  const pct = Math.round(num/total*100);
+
+  document.getElementById('q-current').textContent = num;
+  document.getElementById('q-pct').textContent = pct+'%';
+  document.getElementById('progress-fill').style.width = pct+'%';
+  document.getElementById('q-num-label').textContent = `Question ${num} of ${total}`;
+  document.getElementById('q-text').textContent = q.q;
+  document.getElementById('answer-area').value = '';
+
+  const ctx = document.getElementById('q-context');
+  if(q.ctx){ctx.textContent = '📌 '+q.ctx;ctx.style.display='block';}
+  else ctx.style.display='none';
+
+  document.getElementById('interview-q-wrap').style.display='block';
+  // Reset timer badge colour for new question
+  const tb = document.querySelector('.timer-badge');
+  if(tb){ tb.style.background='var(--amber-light)'; tb.style.color='var(--amber)'; tb.style.animation=''; }
+  document.getElementById('interview-complete').style.display='none';
+
+  resetTimer();
+}
+
+function submitAnswer(){
+  const ans = document.getElementById('answer-area').value.trim();
+  currentSession.answers.push({
+    q: currentSession.questions[currentSession.currentIndex].q,
+    a: ans,
+    hint: currentSession.questions[currentSession.currentIndex].hint,
+    courseContext: currentSession.course.name
+  });
+
+  const s = currentSession;
+  if(s.currentIndex < s.questions.length - 1){
+    s.currentIndex++;
+    renderQuestion();
+  } else {
+    clearInterval(timer);
+    document.getElementById('interview-q-wrap').style.display='none';
+    document.getElementById('interview-complete').style.display='block';
+  }
+}
+
+function skipQuestion(){
+  currentSession.answers.push({
+    q: currentSession.questions[currentSession.currentIndex].q,
+    a: "[Skipped]",
+    hint: currentSession.questions[currentSession.currentIndex].hint,
+    courseContext: currentSession.course.name
+  });
+  const s = currentSession;
+  if(s.currentIndex < s.questions.length - 1){
+    s.currentIndex++;
+    renderQuestion();
+  } else {
+    clearInterval(timer);
+    document.getElementById('interview-q-wrap').style.display='none';
+    document.getElementById('interview-complete').style.display='block';
+  }
+}
+
+function toggleHint(){
+  const box = document.getElementById('hint-box');
+  const q = currentSession.questions[currentSession.currentIndex];
+  if(box.style.display==='none'){
+    document.getElementById('hint-text').textContent = q.hint;
+    box.style.display='flex';
+  } else {
+    box.style.display='none';
+  }
+}
+
+function startTimer(){
+  timerSecs=120;
+  clearInterval(timer);
+  timer = setInterval(()=>{
+    timerSecs--;
+    const m = Math.floor(timerSecs/60).toString().padStart(2,'0');
+    const s = (timerSecs%60).toString().padStart(2,'0');
+    document.getElementById('timer-display').textContent = m+':'+s;
+    if(timerSecs<=0){clearInterval(timer);submitAnswer();}
+    // Visual urgency: turn timer red when ≤30s remain
+    const badge = document.getElementById('timer-display');
+    const wrap = badge && badge.closest('.timer-badge');
+    if(wrap){
+      if(timerSecs<=30){
+        wrap.style.background='var(--red-light)';
+        wrap.style.color='var(--red)';
+        wrap.style.animation = timerSecs<=10 ? 'pulse 0.6s infinite' : '';
+      } else {
+        wrap.style.background='var(--amber-light)';
+        wrap.style.color='var(--amber)';
+        wrap.style.animation='';
+      }
+    }
+  },1000);
+}
+
+function resetTimer(){timerSecs=120;}
+
+// ══════════════════════════════════════════
+//  RESULTS + LLM EVALUATION
+// ══════════════════════════════════════════
+async function showResults(){
+  showSection('results');
+  document.getElementById('results-subtitle').textContent = currentSession.course.name + ' — AI Evaluation';
+
+  showLoading("Our AI is evaluating your answers...");
+
+  const evals = [];
+  for(const item of currentSession.answers){
+    const ev = await evaluateAnswer(item.q, item.a, item.courseContext);
+    evals.push({...item, eval:ev});
+  }
+
+  hideLoading();
+
+  // Aggregate scores
+  const answered = evals.filter(e=>e.a!=="[Skipped]");
+  const avgScore = answered.length ? Math.round(answered.reduce((a,e)=>a+e.eval.score,0)/answered.length) : 0;
+  const avgConcepts = answered.length ? Math.round(answered.reduce((a,e)=>a+(e.eval.concepts||e.eval.score),0)/answered.length) : 0;
+  const avgDepth = answered.length ? Math.round(answered.reduce((a,e)=>a+(e.eval.depth||e.eval.score),0)/answered.length) : 0;
+  const avgAccuracy = answered.length ? Math.round(answered.reduce((a,e)=>a+(e.eval.accuracy||e.eval.score),0)/answered.length) : 0;
+  const avgExamples = answered.length ? Math.round(answered.reduce((a,e)=>a+(e.eval.examples||e.eval.score*0.8),0)/answered.length) : 0;
+
+  document.getElementById('overall-score').textContent = avgScore + '/100';
+  const grade = avgScore>=85?'Excellent — Strong candidate!':avgScore>=70?'Good — Some areas to refine':avgScore>=55?'Fair — Keep practicing':' Developing — More study needed';
+  document.getElementById('overall-meta').textContent = grade;
+
+  setTimeout(()=>{
+    document.getElementById('skill-concepts').style.width = avgConcepts+'%';
+    document.getElementById('skill-depth').style.width = avgDepth+'%';
+    document.getElementById('skill-accuracy').style.width = avgAccuracy+'%';
+    document.getElementById('skill-examples').style.width = avgExamples+'%';
+  },200);
+
+  // Render individual evaluations
+  const list = document.getElementById('eval-list');
+  list.innerHTML = evals.map((e,i)=>{
+    const sc = e.eval.score;
+    const cls = sc>=75?'score-high':sc>=50?'score-mid':'score-low';
+    return`<div class="eval-card">
+      <div class="eval-header">
+        <div class="eval-q">${e.q}</div>
+        <div class="score-pill ${cls}">${sc}/100</div>
+      </div>
+      <div class="eval-answer-label">Your Answer</div>
+      <div class="eval-answer">${e.a||'(No answer provided)'}</div>
+      <div class="eval-feedback-label" style="color:${sc>=75?'#0F6E56':sc>=50?'#633806':'#A32D2D'}">AI Feedback</div>
+      <div class="eval-feedback ${sc>=75?'feedback-positive':sc>=50?'feedback-improve':''}">
+        <strong>✓ Strengths:</strong> ${e.eval.strengths}<br><br>
+        <strong>↗ Improve:</strong> ${e.eval.improvements}
+      </div>
+    </div>`;
+  }).join('');
+
+  // Save to history
+  const historyEntry = {
+    date: new Date().toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'}),
+    course: currentSession.course.name,
+    questions: evals.length,
+    score: avgScore,
+    grade: avgScore>=85?'A':avgScore>=70?'B':avgScore>=55?'C':'D'
+  };
+  sessions.unshift(historyEntry);
+  if(sessions.length>50) sessions.pop();
+  localStorage.setItem('ih_sessions',JSON.stringify(sessions));
+  refreshDashboard();
+}
+
+// ══════════════════════════════════════════
+//  DASHBOARD REFRESH
+// ══════════════════════════════════════════
+function refreshDashboard(){
+  document.getElementById('stat-sessions').textContent = sessions.length;
+  if(sessions.length){
+    const avg = Math.round(sessions.reduce((a,s)=>a+s.score,0)/sessions.length);
+    const best = Math.max(...sessions.map(s=>s.score));
+    const qs = sessions.reduce((a,s)=>a+s.questions,0);
+    document.getElementById('stat-avg').textContent = avg;
+    document.getElementById('stat-questions').textContent = qs;
+    document.getElementById('stat-best').textContent = best;
+
+    // Recent sessions
+    const recent = document.getElementById('recent-sessions');
+    recent.innerHTML = sessions.slice(0,5).map(s=>`
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border2)">
+        <div>
+          <div style="font-size:14px;font-weight:500;color:var(--ink)">${s.course}</div>
+          <div style="font-size:12px;color:var(--ink3)">${s.date} · ${s.questions} questions</div>
+        </div>
+        <div class="score-pill ${s.score>=75?'score-high':s.score>=50?'score-mid':'score-low'}" style="padding:4px 12px;border-radius:100px;font-weight:600;font-size:13px;background:${s.score>=75?'#E1F5EE':s.score>=50?'var(--amber-light)':'var(--red-light)'};color:${s.score>=75?'#0F6E56':s.score>=50?'#633806':'var(--red)'}">
+          ${s.score}/100
+        </div>
+      </div>
+    `).join('');
+    document.getElementById('recent-card').style.display='block';
+
+    // History table
+    const tbody = document.getElementById('history-tbody');
+    tbody.innerHTML = sessions.map(s=>`
+      <tr>
+        <td>${s.date}</td>
+        <td>${s.course}</td>
+        <td>${s.questions}</td>
+        <td><strong>${s.score}/100</strong></td>
+        <td><span class="difficulty-badge ${s.score>=75?'diff-beginner':s.score>=50?'diff-intermediate':'diff-advanced'}">${s.grade}</span></td>
+      </tr>
+    `).join('');
+  }
+}
+
+// ══════════════════════════════════════════
+//  PROFILE
+// ══════════════════════════════════════════
+function saveProfile(){
+  if(!currentUser) return;
+  currentUser.name = document.getElementById('profile-name-input').value || currentUser.name;
+  currentUser.role = document.getElementById('profile-role-select').value;
+  const idx = users.findIndex(u=>u.id===currentUser.id);
+  if(idx>=0){users[idx]=currentUser;localStorage.setItem('ih_users',JSON.stringify(users));}
+  localStorage.setItem('ih_current',JSON.stringify(currentUser));
+  document.getElementById('profile-name').textContent = currentUser.name;
+  document.getElementById('profile-role').textContent = currentUser.role;
+  document.getElementById('sidebar-name').textContent = currentUser.name;
+  document.getElementById('sidebar-avatar').textContent = currentUser.name[0].toUpperCase();
+  document.getElementById('profile-avatar').textContent = currentUser.name[0].toUpperCase();
+  showToast('Profile saved!','success');
+}
+
+// ══════════════════════════════════════════
+//  UTILITIES
+// ══════════════════════════════════════════
+function showLoading(msg='Processing...'){
+  document.getElementById('loading-text').textContent = msg;
+  document.getElementById('loading').classList.add('show');
+}
+function hideLoading(){document.getElementById('loading').classList.remove('show');}
+function showToast(msg,type=''){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.className='toast '+(type||'');
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+
+
+// ══════════════════════════════════════════
+//  CONNECTIVITY GUARD
+//  Intellihire requires internet to function.
+//  - Blocks the UI with a full-screen overlay when offline
+//  - Confirms real connectivity by pinging an external endpoint
+//  - Automatically resumes when connection restores
+// ══════════════════════════════════════════
+
+const BLOCKER = document.getElementById('offline-blocker');
+let _appBooted = false;
+let _checkingConn = false;
+
+// Show/hide blocker
+function showBlocker(){
+  if(BLOCKER){ BLOCKER.style.display='flex'; }
+  // Prevent body scroll when blocker is visible
+  document.body.style.overflow='hidden';
+}
+function hideBlocker(){
+  if(BLOCKER){ BLOCKER.style.display='none'; }
+  document.body.style.overflow='';
+}
+
+// Update the status dot for each service
+function setDot(id, state){ // state: 'checking'|'ok'|'fail'
+  const el = document.getElementById(id+'-dot');
+  if(!el) return;
+  el.className = 'conn-dot ' + state;
+}
+
+// Real connectivity test: try to load a tiny resource from an always-up CDN
+async function hasRealInternet(){
+  setDot('cc-net','checking');
+  setDot('cc-fonts','checking');
+  setDot('cc-api','checking');
+  try{
+    // Fetch a 1x1 pixel from a reliable CDN with a cache-bust param
+    const res = await fetch(
+      'https://www.gstatic.com/generate_204?_=' + Date.now(),
+      { method:'HEAD', mode:'no-cors', cache:'no-store' }
+    );
+    // mode:no-cors always returns type:'opaque' on success, throws on network failure
+    setDot('cc-net','ok');
+    setDot('cc-fonts','ok');
+    setDot('cc-api','ok');
+    return true;
+  } catch(e){
+    setDot('cc-net','fail');
+    setDot('cc-fonts','fail');
+    setDot('cc-api','fail');
+    return false;
+  }
+}
+
+// Main connectivity check flow
+async function checkConnectivity(){
+  if(_checkingConn) return;
+  _checkingConn = true;
+
+  const online = navigator.onLine;
+  if(!online){
+    showBlocker();
+    setDot('cc-net','fail');
+    setDot('cc-fonts','fail');
+    setDot('cc-api','fail');
+    _checkingConn = false;
+    return;
+  }
+
+  // navigator.onLine says true — do a real probe
+  const real = await hasRealInternet();
+  _checkingConn = false;
+
+  if(!real){
+    showBlocker();
+    return;
+  }
+
+  // We have internet — if app not booted yet, boot it now
+  hideBlocker();
+  if(!_appBooted){
+    _appBooted = true;
+    bootApp();
+  }
+}
+
+// Retry button handler
+async function retryConnection(){
+  const btn = document.getElementById('retry-btn');
+  if(btn){ btn.disabled=true; btn.style.opacity='0.6'; }
+  setDot('cc-net','checking');
+  setDot('cc-fonts','checking');
+  setDot('cc-api','checking');
+  await checkConnectivity();
+  if(btn){ btn.disabled=false; btn.style.opacity='1'; }
+}
+
+// Listen for browser online/offline events
+window.addEventListener('offline', ()=>{
+  showBlocker();
+  setDot('cc-net','fail');
+  setDot('cc-fonts','fail');
+  setDot('cc-api','fail');
+});
+
+window.addEventListener('online', ()=>{
+  // Brief delay — some browsers fire 'online' before real connectivity
+  setTimeout(checkConnectivity, 800);
+});
+
+// Also guard evaluateAnswer — if offline mid-session, show toast instead of crashing
+const _originalEvaluate = evaluateAnswer;
+evaluateAnswer = async function(question, answer, courseContext){
+  if(!navigator.onLine){
+    showToast('No internet — using offline scoring', 'error');
+    // Return fallback scores so the session can still complete
+    const len = (answer||'').trim().split(/\s+/).length;
+    const base = Math.min(65, 20 + len * 0.9);
+    return {
+      score:Math.round(base), concepts:Math.round(base),
+      depth:Math.round(base*0.85), accuracy:Math.round(base),
+      examples:Math.round(base*0.7),
+      strengths:"Answer recorded (offline mode — scores are estimated).",
+      improvements:"Reconnect to the internet for full AI-powered evaluation."
+    };
+  }
+  return _originalEvaluate(question, answer, courseContext);
+};
+
+// ── BOOT FUNCTION (replaces the old inline IIFE)
+function bootApp(){
+  renderCourses();
+  // Returning user with saved session -> skip welcome, go straight to app
+  const saved = localStorage.getItem('ih_current');
+  if(saved){
+    try{
+      const user = JSON.parse(saved);
+      if(user && user.id && user.name && user.email){
+        loginUser(user);
+        return;
+      }
+    }catch(e){}
+  }
+  // New visitor -> show the royal welcome board first
+  showPage('landing');
+}
+
+// ── START: show blocker first, then check
+showBlocker(); // block immediately before any app content shows
+checkConnectivity();
+
+
+// ══════════════════════════════════════════
+//  ROYAL LANDING — Particle / Floating Orbs
+// ══════════════════════════════════════════
+(function initRoyalCanvas(){
+  const canvas = document.getElementById('royal-canvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+
+  function resize(){
+    W = canvas.width  = canvas.offsetWidth  || window.innerWidth;
+    H = canvas.height = canvas.offsetHeight || window.innerHeight;
+  }
+
+  function randomBetween(a,b){ return a + Math.random()*(b-a); }
+
+  function createParticle(){
+    return {
+      x: Math.random()*W,
+      y: Math.random()*H,
+      r: randomBetween(0.5, 2.2),
+      vx: randomBetween(-0.15, 0.15),
+      vy: randomBetween(-0.25, -0.05),
+      alpha: randomBetween(0.1, 0.55),
+      gold: Math.random() > 0.5,
+    };
+  }
+
+  function initParticles(){
+    particles = [];
+    const count = Math.min(Math.floor((W*H)/8000), 90);
+    for(let i=0;i<count;i++) particles.push(createParticle());
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    particles.forEach(p=>{
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fillStyle = p.gold
+        ? `rgba(201,168,76,${p.alpha})`
+        : `rgba(255,255,255,${p.alpha * 0.6})`;
+      ctx.fill();
+
+      p.x += p.vx;
+      p.y += p.vy;
+
+      // Wrap around
+      if(p.y < -4)  p.y = H + 4;
+      if(p.x < -4)  p.x = W + 4;
+      if(p.x > W+4) p.x = -4;
+    });
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  initParticles();
+  draw();
+  window.addEventListener('resize', ()=>{ resize(); initParticles(); });
+})();
+
+</script>
+
+<!-- ═══════════════════════════════════════
+     OFFLINE BLOCKER  (shown when no internet)
+════════════════════════════════════════ -->
+<div id="offline-blocker" style="
+  display:none;position:fixed;inset:0;z-index:9999;
+  background:linear-gradient(160deg,#0E2820 0%,#1A5F4A 100%);
+  align-items:center;justify-content:center;flex-direction:column;
+  text-align:center;padding:2rem;font-family:'DM Sans',sans-serif;
+">
+  <div style="max-width:420px">
+    <!-- Animated wifi-off icon -->
+    <div style="
+      width:80px;height:80px;border-radius:50%;
+      background:rgba(255,255,255,0.08);border:2px solid rgba(255,255,255,0.15);
+      display:flex;align-items:center;justify-content:center;
+      margin:0 auto 2rem;animation:blocker-pulse 2s ease-in-out infinite;
+    ">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="1" y1="1" x2="23" y2="23"/>
+        <path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/>
+        <path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/>
+        <path d="M10.71 5.05A16 16 0 0 1 22.56 9"/>
+        <path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/>
+        <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+        <circle cx="12" cy="20" r="1" fill="rgba(255,255,255,0.7)" stroke="none"/>
+      </svg>
+    </div>
+
+    <h2 style="
+      font-family:'Fraunces',serif;font-weight:600;font-size:1.8rem;
+      color:#fff;margin-bottom:0.75rem;letter-spacing:-0.02em;line-height:1.2;
+    ">No Internet Connection</h2>
+
+    <p style="color:rgba(255,255,255,0.6);font-size:0.95rem;line-height:1.7;margin-bottom:2rem;">
+      Intellihire requires an active internet connection to load resources, 
+      generate AI-powered questions, and evaluate your answers in real time.
+    </p>
+
+    <!-- Status pills -->
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:2rem;text-align:left;">
+      <div class="conn-check-row" id="cc-fonts">
+        <div class="conn-dot" id="cc-fonts-dot"></div>
+        <span style="font-size:13px;color:rgba(255,255,255,0.7)">Google Fonts (UI rendering)</span>
+      </div>
+      <div class="conn-check-row" id="cc-api">
+        <div class="conn-dot" id="cc-api-dot"></div>
+        <span style="font-size:13px;color:rgba(255,255,255,0.7)">Anthropic API (AI evaluation)</span>
+      </div>
+      <div class="conn-check-row" id="cc-net">
+        <div class="conn-dot" id="cc-net-dot"></div>
+        <span style="font-size:13px;color:rgba(255,255,255,0.7)">Internet connectivity</span>
+      </div>
+    </div>
+
+    <button onclick="retryConnection()" id="retry-btn" style="
+      background:#fff;color:#0E2820;border:none;border-radius:8px;
+      padding:13px 32px;font-family:'DM Sans',sans-serif;font-size:15px;
+      font-weight:600;cursor:pointer;transition:all 0.2s;letter-spacing:-0.01em;
+      display:inline-flex;align-items:center;gap:8px;
+    " onmouseover="this.style.background='#E1F5EE'" onmouseout="this.style.background='#fff'">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+      Try Again
+    </button>
+
+    <p style="margin-top:1.5rem;font-size:12px;color:rgba(255,255,255,0.3);">
+      Intellihire will automatically resume once your connection is restored.
+    </p>
+  </div>
+</div>
+
+<style>
+@keyframes blocker-pulse{
+  0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,255,255,0.1)}
+  50%{transform:scale(1.05);box-shadow:0 0 0 12px rgba(255,255,255,0)}
+}
+.conn-check-row{
+  display:flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);
+  border-radius:8px;padding:10px 14px;
+}
+.conn-dot{
+  width:10px;height:10px;border-radius:50%;flex-shrink:0;
+  background:rgba(255,255,255,0.2);transition:background 0.4s;
+}
+.conn-dot.ok{background:#5DCAA5;box-shadow:0 0 6px rgba(93,202,165,0.5)}
+.conn-dot.fail{background:#E05C5C;box-shadow:0 0 6px rgba(224,92,92,0.4)}
+.conn-dot.checking{background:#F0A500;animation:blink 0.8s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+</style>
+
+</body>
+</html>
