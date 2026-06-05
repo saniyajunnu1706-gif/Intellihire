@@ -14,7 +14,7 @@
 
 *Practice smarter. Get evaluated by real AI. Ace your next role.*
 
-[🚀 Live Demo](https://intellihire.netlify.app) · [🐛 Report Bug](https://github.com/YOUR-USERNAME/intellihire/issues) · [💡 Request Feature](https://github.com/YOUR-USERNAME/intellihire/issues)
+[🚀 Live Demo](https://intellihire-8.netlify.app) · [🐛 Report Bug](https://github.com/saniyajunnu1706-gif/intellihire/issues) · [💡 Request Feature](https://github.com/sanoyajunnu1706-gif/intellihire/issues)
 
 </div>
 
@@ -166,7 +166,7 @@ Go to **Settings → Pages → Deploy from branch → main / root**
 ## 🤝 Contributing
 
 ```bash
-git clone https://github.com/saniyajunnu1706/intellihire.git
+git clone https://github.com/saniyajunnu1706-gif/intellihire.git
 git checkout -b feature/your-feature-name
 # make changes to index.html
 git commit -m "feat: describe your change"
@@ -185,7 +185,7 @@ MIT License — Copyright (c) 2025 Intellihire
 ## 📬 Contact
 
 - 🌐 Website: [intellihire-8.netlify.app](https://intellihire-8.netlify.app)
-- 🐙 GitHub: [@saniyajunnu1706](https://github.com/saniyajunnu1706)
+- 🐙 GitHub: [@saniyajunnu1706-gif](https://github.com/saniyajunnu1706-gif)
 
 ---
 
